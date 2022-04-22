@@ -1,47 +1,60 @@
 #include "UserManager.h"
 
-void UzytkownikMenedzer::rejestracjaUzytkownika(){
-    Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
+void UserManager::userRegistration(){
+    User user = writeNewUserData();
 
-    uzytkownicy.push_back(uzytkownik);
-    plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    users.push_back(user);
+    fileXMLUsers.addTheRecipientToTheFile(user);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
 }
 
-Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika(){
-    Uzytkownik uzytkownik;
-
-    uzytkownik.ustawId(pobierzIdNowegoUzytkownika());
+User UserManager::writeNewUserData(){
+    User user;
     string login;
+    string password;
+    string name;
+    string surname;
+
+    user.setUserId(getNewUserId());
+
     do
     {
         cout << "Podaj login: ";
         cin >> login;
-        uzytkownik.ustawLogin(login);
-    } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
+        user.setLogin(login);
+    } while (isThereALogin(user.getLogin()) == true);
 
-    string haslo;
     cout << "Podaj haslo: ";
-    cin >> haslo;
-    uzytkownik.ustawHaslo(haslo);
+    cin >> password;
+    user.setPassword(password);
 
-    return uzytkownik;
+    cout << "Podaj imie: ";
+    cin >> name;
+    user.setName(name);
+
+    cout << "Podaj nazwisko: ";
+    cin >> surname;
+    user.setSurname(surname);
+
+    return user;
 }
 
-/*
-int UzytkownikMenedzer::pobierzIdNowegoUzytkownika(){
-    if (uzytkownicy.empty() == true)
+
+int UserManager::getNewUserId(){
+    User user;
+    if (users.empty() == true)
         return 1;
     else
-        return uzytkownicy.back().pobierzId() + 1;
+        return users.back().getUserId() + 1;
 }
 
-bool UzytkownikMenedzer::czyIstniejeLogin(string login)
+
+bool UserManager::isThereALogin(string login)
 {
-    for (int i=0; i<uzytkownicy.size(); i++){
-        if (uzytkownicy[i].pobierzLogin() == login){
+    for (int i=0; i<users.size(); i++){
+        if (users[i].getLogin() == login){
             cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
             return true;
         }
@@ -49,6 +62,7 @@ bool UzytkownikMenedzer::czyIstniejeLogin(string login)
     return false;
 }
 
+/*
 void UzytkownikMenedzer::wypiszWszystkichUzytkownikow(){
     for (int i=0; i<uzytkownicy.size(); i++){
         cout << uzytkownicy[i].pobierzId() << endl;

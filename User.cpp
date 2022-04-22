@@ -27,7 +27,7 @@ string User::getPassword(){
 }
 string User::getName(){
     return name;
-}/
+}
 string User::getSurname(){
     return surname;
 }

@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/*
 int menu(PersonalBudget &personalBudget){
     while(true) {
         char choiceMenu;
@@ -34,11 +35,13 @@ int menu(PersonalBudget &personalBudget){
         }
     }
 }
+*/
 
 int main()
 {
     char choice;
-    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
+//    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
+    PersonalBudget personalBudget;
     while(true) {
         system("cls");
         cout << "MENU GLOWNE" << endl;
@@ -48,12 +51,13 @@ int main()
         cin >> choice;
 
         if(choice == '1') {
-            personalBudget.userLoggIn();
-            menu(personalBudget);
-        } else if (choice == '2') {
             personalBudget.userRegistration();
+        } else if (choice == '2') {
+//            personalBudget.userLoggIn();
+//            menu(personalBudget);
         } else if (choice == '3') {
             exit(0);
         }
+    }
     return 0;
 }
