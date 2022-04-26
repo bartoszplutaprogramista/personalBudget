@@ -11,9 +11,11 @@ using namespace std;
 
 class UserManager{
 //    User user;
+    CMarkup xml;
     FileXMLUsers fileXMLUsers;
     vector <User> users;
 public:
+    void loadDataIntoAVector();
     void userRegistration();
     User writeNewUserData();
     int getNewUserId();

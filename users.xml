@@ -9,23 +9,23 @@
 </User1>
 <User2>
 <UserId >2</UserId >
-<login >marc</login >
-<password >zPamo</password >
-<name >Marcin</name >
-<surname >ZPamo</surname >
+<login >mark</login >
+<password >psierb</password >
+<name >Marek</name >
+<surname >Pasierbowicz</surname >
 </User2>
 <User3>
 <UserId >3</UserId >
-<login >alka</login >
-<password >klam</password >
-<name >Alicja</name >
-<surname >Klamut</surname >
+<login >1</login >
+<password >2</password >
+<name >Mateusz</name >
+<surname >WOjtanowski</surname >
 </User3>
-<User1>
-<UserId >1</UserId >
-<login >Dan</login >
-<password >Wro</password >
-<name >Daniel</name >
-<surname >Wronowski</surname >
-</User1>
+<User4>
+<UserId >4</UserId >
+<login >kond</login >
+<password >walew</password >
+<name >Kondrad</name >
+<surname >Walewski</surname >
+</User4>
 </Users>

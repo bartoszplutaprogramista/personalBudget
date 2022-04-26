@@ -2,6 +2,8 @@
 #define PERSONALBUDGET_H
 #include <iostream>
 #include "UserManager.h"
+#include "User.h"
+#include "Markup.h"
 
 using namespace std;
 
@@ -10,6 +12,7 @@ using namespace std;
 class PersonalBudget{
     UserManager userManager;
 public:
+    void loadDataIntoAVector();
     void userRegistration();
 
 /*

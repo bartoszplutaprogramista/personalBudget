@@ -43,7 +43,7 @@ User UserManager::writeNewUserData(){
 
 
 int UserManager::getNewUserId(){
-    User user;
+//    User user;
     if (users.empty() == true)
         return 1;
     else
@@ -60,6 +60,45 @@ bool UserManager::isThereALogin(string login)
         }
     }
     return false;
+}
+
+void UserManager::loadDataIntoAVector(){
+    cout << "WSZEDLEM DO TEGO IFA" << endl;
+    system("pause");
+    User user;
+    CMarkup xml;
+    bool fileExists = xml.Load( "users.xml" );
+//    if (!fileExists){
+//        lastUserId = 1;
+//    }
+    xml.ResetPos();
+    xml.FindElem();
+    xml.IntoElem();
+    while (xml.FindElem()){
+        xml.IntoElem();
+        xml.FindElem();
+        user.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+//        cout << "USERID: " << user.getUserId() << endl;
+//        system("pause");
+        xml.FindElem();
+        user.setLogin(xml.GetData());
+        xml.FindElem();
+        user.setPassword(xml.GetData());
+        xml.FindElem();
+        user.setName(xml.GetData());
+        xml.FindElem();
+        user.setSurname(xml.GetData());
+        xml.OutOfElem();
+        users.push_back(user);
+    }
+    for (int i=0; i<users.size(); i++){
+        cout << "userId: " << users[i].getUserId() << endl;
+        cout << "getLogin: " << users[i].getLogin() << endl;
+        cout << "getPassword: " << users[i].getPassword() << endl;
+        cout << "getName: " << users[i].getName() << endl;
+        cout << "getSurname: " << users[i].getSurname() << endl;
+    }
+    system("pause");
 }
 
 /*

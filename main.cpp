@@ -1,5 +1,6 @@
 #include <iostream>
 #include "PersonalBudget.h"
+//#include "UserManager.h"
 
 using namespace std;
 
@@ -42,6 +43,8 @@ int main()
     char choice;
 //    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
     PersonalBudget personalBudget;
+    personalBudget.loadDataIntoAVector();
+//    UserManager userManager;
     while(true) {
         system("cls");
         cout << "MENU GLOWNE" << endl;
@@ -49,7 +52,7 @@ int main()
         cout << "2. Logowanie" << endl;
         cout << "3. Zamknij program" << endl;
         cin >> choice;
-
+//    personalBudget.loadDataIntoAVector(userManager.users);
         if(choice == '1') {
             personalBudget.userRegistration();
         } else if (choice == '2') {
