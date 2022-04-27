@@ -3,7 +3,7 @@
 <User1>
 <UserId >1</UserId >
 <login >bart</login >
-<password >pl</password >
+<password >BARTPL</password >
 <name >Bartosz</name >
 <surname >Pluta</surname >
 </User1>
@@ -17,14 +17,14 @@
 <User3>
 <UserId >3</UserId >
 <login >1</login >
-<password >2</password >
+<password >wojtanowski</password >
 <name >Mateusz</name >
 <surname >WOjtanowski</surname >
 </User3>
 <User4>
 <UserId >4</UserId >
 <login >kond</login >
-<password >walew</password >
+<password >walewWALEW</password >
 <name >Kondrad</name >
 <surname >Walewski</surname >
 </User4>

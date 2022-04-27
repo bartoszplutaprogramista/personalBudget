@@ -14,6 +14,9 @@ class PersonalBudget{
 public:
     void loadDataIntoAVector();
     void userRegistration();
+    int userLoggIn();
+    void changeOfTheLoggedInUserPassword(int loggedInUserID);
+    int getTheLoggedInUserID();
 
 /*
     changeOfTheLoggedInUserPassword();

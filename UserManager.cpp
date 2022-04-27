@@ -71,34 +71,96 @@ void UserManager::loadDataIntoAVector(){
 //    if (!fileExists){
 //        lastUserId = 1;
 //    }
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
-    while (xml.FindElem()){
+    if (fileExists){
+        xml.ResetPos();
+        xml.FindElem();
         xml.IntoElem();
-        xml.FindElem();
-        user.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
-//        cout << "USERID: " << user.getUserId() << endl;
-//        system("pause");
-        xml.FindElem();
-        user.setLogin(xml.GetData());
-        xml.FindElem();
-        user.setPassword(xml.GetData());
-        xml.FindElem();
-        user.setName(xml.GetData());
-        xml.FindElem();
-        user.setSurname(xml.GetData());
-        xml.OutOfElem();
-        users.push_back(user);
+        while (xml.FindElem()){
+            xml.IntoElem();
+            xml.FindElem();
+            user.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+    //        cout << "USERID: " << user.getUserId() << endl;
+    //        system("pause");
+            xml.FindElem();
+            user.setLogin(xml.GetData());
+            xml.FindElem();
+            user.setPassword(xml.GetData());
+            xml.FindElem();
+            user.setName(xml.GetData());
+            xml.FindElem();
+            user.setSurname(xml.GetData());
+            xml.OutOfElem();
+            users.push_back(user);
+        }
+        for (int i=0; i<users.size(); i++){
+            cout << "userId: " << users[i].getUserId() << endl;
+            cout << "getLogin: " << users[i].getLogin() << endl;
+            cout << "getPassword: " << users[i].getPassword() << endl;
+            cout << "getName: " << users[i].getName() << endl;
+            cout << "getSurname: " << users[i].getSurname() << endl;
+        }
+        system("pause");
     }
-    for (int i=0; i<users.size(); i++){
-        cout << "userId: " << users[i].getUserId() << endl;
-        cout << "getLogin: " << users[i].getLogin() << endl;
-        cout << "getPassword: " << users[i].getPassword() << endl;
-        cout << "getName: " << users[i].getName() << endl;
-        cout << "getSurname: " << users[i].getSurname() << endl;
+}
+
+int UserManager::userLoggIn(){
+    string login = "", password = "";
+    cout << endl << "Podaj login: ";
+    login = AuxiliaryMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
+            {
+                cout << "Podaj haslo. Pozostalo prob: " << numberOfAttempts << ": ";
+                password = AuxiliaryMethods::loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "Zalogowales sie." << endl << endl;
+                    system("pause");
+                    loggedInUserID = itr -> getUserId();
+//                    ustawIdZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
+                    cout << "ID ZALOGOWANEGO UZYTKOWNIKA WYNOSI: " << loggedInUserID << endl;
+                    getch();
+                    return loggedInUserID;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
     }
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+    return 0;
+}
+
+void UserManager::changeOfTheLoggedInUserPassword(int loggedInUserID){
+    string password;
+    User user;
+    cout << "Wprowadz nowe haslo: " << endl;
+    cin >> password;
+    users[loggedInUserID-1].setPassword(password);
+    cout << "Haslo zmieniono pomyslnie!" << endl;
+    getch();
+    AuxiliaryMethods::deleteXMLFile();
+    for (int i=0; i<users.size(); i++){
+        user.setUserId(users[i].getUserId());
+        user.setLogin(users[i].getLogin());
+        user.setPassword(users[i].getPassword());
+        user.setName(users[i].getName());
+        user.setSurname(users[i].getSurname());
+        fileXMLUsers.addTheRecipientToTheFile(user);
+    }
+}
+
+int UserManager::getTheLoggedInUserID(){
+    return loggedInUserID;
 }
 
 /*

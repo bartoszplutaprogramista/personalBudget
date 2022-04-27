@@ -1,17 +1,18 @@
 #include <iostream>
 #include "PersonalBudget.h"
+#include <conio.h>
 //#include "UserManager.h"
 
 using namespace std;
 
-/*
+
 int menu(PersonalBudget &personalBudget){
     while(true) {
         char choiceMenu;
         system("cls");
         cout << "1. Dodaj przychod" << endl;
         cout << "2. Dodaj wydatek" << endl;
-        cout << "3. Bilans z bie¿¹cego miesiaca" << endl;
+        cout << "3. Bilans z biezacego miesiaca" << endl;
         cout << "4. Bilans z poprzedniego miesisca" << endl;
         cout << "5. Bilans z wybranego okresu" << endl;
         cout << "6. Zmien haslo" << endl;
@@ -19,24 +20,38 @@ int menu(PersonalBudget &personalBudget){
 
         cin >> choiceMenu;
         if(choiceMenu == '1') {
-            personalBudget.addIncome();
+//            personalBudget.addIncome();
+            cout << "1. Dodaj przychod" << endl;
+            getch();
         } else if (choiceMenu == '2') {
-            personalBudget.addExpense();
+//            personalBudget.addExpense();
+            cout << "2. Dodaj wydatek" << endl;
+            getch();
         } else if (choiceMenu == '3') {
-            personalBudget.displayCurrentMonthBalance();
+//            personalBudget.displayCurrentMonthBalance();
+            cout << "3. Bilans z bie¿¹cego miesiaca" << endl;
+            getch();
         } else if (choiceMenu == '4') {
-            personalBudget.displayTheBalanceForThePreviousMonth();
+ //           personalBudget.displayTheBalanceForThePreviousMonth();
+            cout << "4. Bilans z poprzedniego miesisca" << endl;
+            getch();
         } else if (choiceMenu == '5') {
-            personalBudget.displayTheBalanceForTheSelectedPeriod();
+//            personalBudget.displayTheBalanceForTheSelectedPeriod();
+            cout << "5. Bilans z wybranego okresu" << endl;
+            getch();
         } else if (choiceMenu == '6') {
-            personalBudget.changeOfTheLoggedInUserPassword();
+            personalBudget.changeOfTheLoggedInUserPassword(personalBudget.getTheLoggedInUserID());
+//            cout << "6. Zmien haslo" << endl;
+//            getch();
         } else if (choiceMenu == '7') {
-            personalBudget.loggOutOfTheUser();
+//            personalBudget.loggOutOfTheUser();
+            cout << "7. Wyloguj sie" << endl;
+            getch();
             return 0;
         }
     }
 }
-*/
+
 
 int main()
 {
@@ -56,8 +71,10 @@ int main()
         if(choice == '1') {
             personalBudget.userRegistration();
         } else if (choice == '2') {
-//            personalBudget.userLoggIn();
-//            menu(personalBudget);
+            personalBudget.userLoggIn();
+            cout << "getTheLoggedInUserID: " << personalBudget.getTheLoggedInUserID() << endl;
+            getch();
+            menu(personalBudget);
         } else if (choice == '3') {
             exit(0);
         }
