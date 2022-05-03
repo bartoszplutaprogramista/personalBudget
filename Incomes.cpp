@@ -8,13 +8,13 @@ void Incomes::setUserId(int newUserId){
     if (newUserId >= 0)
     userId = newUserId;
 }
-void Incomes::setDate(string newDate){
+void Incomes::setDate(int newDate){
     date = newDate;
 }
 void Incomes::setItem(string newItem){
     item = newItem;
 }
-void Incomes::setAmount(string newAmount){
+void Incomes::setAmount(float newAmount){
     amount = newAmount;
 }
 int Incomes::getIncomeId(){
@@ -23,12 +23,12 @@ int Incomes::getIncomeId(){
 int Incomes::getUserId(){
     return userId;
 }
-string Incomes::getDate(){
+int Incomes::getDate(){
     return date;
 }
 string Incomes::getItem(){
     return item;
 }
-string Incomes::getAmount(){
+float Incomes::getAmount(){
     return amount;
 }

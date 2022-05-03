@@ -26,3 +26,20 @@ void AuxiliaryMethods::deleteXMLFile(){
 //        getch();
 //    }
 }
+
+int AuxiliaryMethods::convertStringToInt(string number){
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+
+    return numberInt;
+}
+
+bool AuxiliaryMethods::checkWetherTheDateIsGood(string date){
+    if (date[4] != '-' || date[7] != '-'){
+        cout << "Zly format daty sproboj jeszcze raz " << endl;
+        system("pause");
+        return false;
+    }
+    return true;
+}

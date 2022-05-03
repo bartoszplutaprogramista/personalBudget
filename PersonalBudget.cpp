@@ -15,6 +15,7 @@ int PersonalBudget::userLoggIn(){
 //    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()){
 //        adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
 //    }
+    return 0;
 }
 
 void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
@@ -23,6 +24,12 @@ void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
 
 int PersonalBudget::getTheLoggedInUserID(){
     userManager.getTheLoggedInUserID();
+    return userManager.getTheLoggedInUserID();
+}
+
+int PersonalBudget::addIncome(){
+    addManager.addIncome();
+    return 0;
 }
 
 /*

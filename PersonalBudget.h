@@ -3,6 +3,7 @@
 #include <iostream>
 #include "UserManager.h"
 #include "User.h"
+#include "AddManager.h"
 #include "Markup.h"
 
 using namespace std;
@@ -11,7 +12,9 @@ using namespace std;
 
 class PersonalBudget{
     UserManager userManager;
+    AddManager addManager;
 public:
+    int addIncome();
     void loadDataIntoAVector();
     void userRegistration();
     int userLoggIn();

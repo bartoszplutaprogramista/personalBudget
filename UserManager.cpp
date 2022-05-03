@@ -53,7 +53,8 @@ int UserManager::getNewUserId(){
 
 bool UserManager::isThereALogin(string login)
 {
-    for (int i=0; i<users.size(); i++){
+    int usersSize = users.size();
+    for (int i=0; i<usersSize; i++){
         if (users[i].getLogin() == login){
             cout << endl << "Istnieje uzytkownik o takim loginie." << endl;
             return true;
