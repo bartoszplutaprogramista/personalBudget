@@ -220,11 +220,3 @@ bool UzytkownikMenedzer::czyUzytkownikJestZalogowany(){
 void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int id){
     idZalogowanegoUzytkownika = id;
 }
-
-int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika(){
-    return idZalogowanegoUzytkownika;
-}
-
-void UzytkownikMenedzer::wylogowanieUzytkownika(){
-    idZalogowanegoUzytkownika = 0;
-} */
