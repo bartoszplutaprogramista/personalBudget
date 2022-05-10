@@ -1,34 +1,34 @@
 #include "Expenses.h"
 
-void IncomesExpenses::setIncomeId(int newIncomeId){
+void Expenses::setExpensesId(int newIncomeId){
     if (newIncomeId >= 0)
-    incomeId = newIncomeId;
+    expenseId = newIncomeId;
 }
-void IncomesExpenses::setUserId(int newUserId){
+void Expenses::setUserId(int newUserId){
     if (newUserId >= 0)
     userId = newUserId;
 }
-void IncomesExpenses::setDate(string newDate){
+void Expenses::setDate(string newDate){
     date = newDate;
 }
-void IncomesExpenses::setItem(string newItem){
+void Expenses::setItem(string newItem){
     item = newItem;
 }
-void IncomesExpenses::setAmount(string newAmount){
+void Expenses::setAmount(string newAmount){
     amount = newAmount;
 }
-int IncomesExpenses::getIncomeId(){
-    return incomeId;
+int Expenses::getExpensesId(){
+    return expenseId;
 }
-int IncomesExpenses::getUserId(){
+int Expenses::getUserId(){
     return userId;
 }
-string IncomesExpenses::getDate(){
+string Expenses::getDate(){
     return date;
 }
-string IncomesExpenses::getItem(){
+string Expenses::getItem(){
     return item;
 }
-string IncomesExpenses::getAmount(){
+string Expenses::getAmount(){
     return amount;
 }

@@ -1,14 +1,28 @@
 #ifndef PERSONALBUDGET_H
 #define PERSONALBUDGET_H
 #include <iostream>
+#include "UserManager.h"
+#include "User.h"
+#include "AddManager.h"
+#include "Markup.h"
 
 using namespace std;
 
-class PersonalBudget{
+//UserManager userManager;
 
+class PersonalBudget{
+    UserManager userManager;
+    AddManager addManager;
 public:
+    int addIncome();
+    void loadDataIntoAVector();
+    void userRegistration();
+    int userLoggIn();
+    void changeOfTheLoggedInUserPassword(int loggedInUserID);
+    int getTheLoggedInUserID();
+
+/*
     changeOfTheLoggedInUserPassword();
-    userRegistration();
     userLoggIn();
     addIncome();
     addExpense();
@@ -17,7 +31,7 @@ public:
     loggOutOfTheUser();
     displayCurrentMonthBalance();
     displayTheBalanceForThePreviousMonth();
-    displayTheBalanceForTheSelectedPeriod();
+    displayTheBalanceForTheSelectedPeriod(); */
 };
 
 #endif
