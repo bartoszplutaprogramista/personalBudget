@@ -39,7 +39,7 @@ void AddManager::wyswietl(){
     system("pause");
 }
 
-Incomes AddManager::writeNewThings(){
+Incomes AddManager::writeToday(){
     Incomes incomes;
     string date;
     string item;
@@ -47,6 +47,73 @@ Incomes AddManager::writeNewThings(){
     int dateInt = 0;
     float incomesFloat;
     string amountText, amountTextDot;
+
+    date = getSystemDate();
+    cout << "date po sklejeniu: " << date << endl;
+    dateInt = AuxiliaryMethods::convertStringToInt(date);
+    incomes.setDate(dateInt);
+    cout << "date po przeksztalceniu w INT: " << dateInt << endl;
+    getch();
+    cout << "Czego dotyczy przychod: ";
+    item = AuxiliaryMethods::loadLine();
+    incomes.setItem(item);
+
+    cout << "get item: " << incomes.getItem() << endl;
+    getch();
+
+    cout << "Podaj wysokosc przychodu: ";
+    amountText = AuxiliaryMethods::loadLine();
+    amountTextDot = checkTheComma(amountText);
+
+    incomesFloat=atof(amountTextDot.c_str());
+    cout << "incomesFloat " << incomesFloat << endl;
+
+    incomes.setAmount(incomesFloat);
+
+    return incomes;
+}
+
+Incomes AddManager::writeWithAnotherDate(string date){
+    Incomes incomes;
+    string item;
+    string yearMonthDay = "";
+    int dateInt = 0;
+    float incomesFloat;
+    string amountText, amountTextDot;
+
+    yearMonthDay = getYearMonthDay(date);
+    dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
+    cout << "date po przeksztalceniu w INT (dowolna data): " << dateInt << endl;
+    incomes.setDate(dateInt);
+
+    cout << "Czego dotyczy przychod: ";
+    item = AuxiliaryMethods::loadLine();
+    incomes.setItem(item);
+
+    cout << "get item: " << incomes.getItem() << endl;
+    getch();
+
+    cout << "Podaj wysokosc przychodu: ";
+    amountText = AuxiliaryMethods::loadLine();
+    amountTextDot = checkTheComma(amountText);
+
+    incomesFloat=atof(amountTextDot.c_str());
+    cout << "incomesFloat " << incomesFloat << endl;
+
+    incomes.setAmount(incomesFloat);
+
+    return incomes;
+}
+
+Incomes AddManager::writeNewThings(){
+    Incomes incomes;
+    string date;
+/*
+    string item;
+    string yearMonthDay = "";
+    int dateInt = 0;
+    float incomesFloat;
+    string amountText, amountTextDot; */
 
 //    user.setUserId(getNewUserId());
     char choice;
@@ -56,52 +123,12 @@ Incomes AddManager::writeNewThings(){
     cin >> choice;
 
     if (choice == '1'){
-        date = getSystemDate();
-        cout << "date po sklejeniu: " << date << endl;
-        dateInt = AuxiliaryMethods::convertStringToInt(date);
-        incomes.setDate(dateInt);
-        cout << "date po przeksztalceniu w INT: " << dateInt << endl;
-        getch();
-        cout << "Czego dotyczy przychod: ";
-        item = AuxiliaryMethods::loadLine();
-        incomes.setItem(item);
-
-        cout << "get item: " << incomes.getItem() << endl;
-        getch();
-
-        cout << "Podaj wysokosc przychodu: ";
-        amountText = AuxiliaryMethods::loadLine();
-        amountTextDot = checkTheComma(amountText);
-
-        incomesFloat=atof(amountTextDot.c_str());
-        cout << "incomesFloat " << incomesFloat << endl;
-
-        incomes.setAmount(incomesFloat);
+        incomes = writeToday();
     } else {
         cout << "Wprowadz date format RRRR-MM-DD: ";
         date = AuxiliaryMethods::loadLine();
         if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
-            yearMonthDay = getYearMonthDay(date);
-            dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
-            cout << "date po przeksztalceniu w INT (dowolna data): " << dateInt << endl;
-            incomes.setDate(dateInt);
-
-            cout << "Czego dotyczy przychod: ";
-            item = AuxiliaryMethods::loadLine();
-            incomes.setItem(item);
-
-            cout << "get item: " << incomes.getItem() << endl;
-            getch();
-
-            cout << "Podaj wysokosc przychodu: ";
-            amountText = AuxiliaryMethods::loadLine();
-            amountTextDot = checkTheComma(amountText);
-
-            incomesFloat=atof(amountTextDot.c_str());
-            cout << "incomesFloat " << incomesFloat << endl;
-
-            incomes.setAmount(incomesFloat);
-
+            incomes = writeWithAnotherDate(date);
         } else {
             system("cls");
             incomes = writeNewThings();

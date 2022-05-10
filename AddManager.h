@@ -22,6 +22,8 @@ public:
     int addExpense();
     void wyswietl();
     Incomes writeNewThings();
+    Incomes writeToday();
+    Incomes writeWithAnotherDate(string date);
     string addZeroBeforeMonth(string variable, int monthToday);
     string addZeroBeforeDay(string variable, int dayToday);
     string getYearMonthDay(string date);
