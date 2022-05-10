@@ -16,13 +16,14 @@ class AddManager{
 
 
 public:
-    void addIncome();
+    int addIncome();
     string getSystemDate();
 //    string enterDateYYYYMMDD();
     int addExpense();
     void wyswietl();
-    Incomes writeNewThings(char choice);
-    string addZeroBefore(string variable, int monthToday, int dayToday);
+    Incomes writeNewThings();
+    string addZeroBeforeMonth(string variable, int monthToday);
+    string addZeroBeforeDay(string variable, int dayToday);
     string getYearMonthDay(string date);
     string checkTheComma(string amountText);
 };
