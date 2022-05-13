@@ -12,12 +12,14 @@
 using namespace std;
 
 class UserManager{
-//    User user;
     CMarkup xml;
     FileXMLUsers fileXMLUsers;
     int loggedInUserID;
     vector <User> users;
 public:
+    UserManager(){
+        loggedInUserID = 0;
+    };
     void loadDataIntoAVector();
     void userRegistration();
     User writeNewUserData();
@@ -26,13 +28,8 @@ public:
     int userLoggIn();
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
-/*
-    void wypiszWszystkichUzytkownikow();
-    int logowanieUzytkownika();
-    bool czyUzytkownikJestZalogowany();
-    int pobierzIdZalogowanegoUzytkownika();
-    void ustawIdZalogowanegoUzytkownika(int id);
-    void wylogowanieUzytkownika(); */
+    int getTheLoggedInUserIDFromUserManager();
+    bool isTheUserLoggedIn();
 
 };
 

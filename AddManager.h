@@ -6,19 +6,24 @@
 #include <ctime>
 #include <conio.h>
 #include "AuxiliaryMethods.h"
+#include "FileXMLIncomes.h"
+#include "UserManager.h"
 
 using namespace std;
 
 class AddManager{
-//    Incomes incomes;
+    const int LOGGED_IN_USER_ID;
     vector <Incomes> incomesVec;
-//    vector <Expenses> expensesVec;
+    int incomeID;
 
 
 public:
+    AddManager(int loggedInUserID)
+    : LOGGED_IN_USER_ID(loggedInUserID){
+        incomeID = 0;
+    };
     int addIncome();
     string getSystemDate();
-//    string enterDateYYYYMMDD();
     int addExpense();
     void wyswietl();
     Incomes writeNewThings();

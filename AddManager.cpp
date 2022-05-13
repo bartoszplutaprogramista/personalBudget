@@ -3,30 +3,21 @@
 int AddManager::addIncome(){
     system("cls");
     Incomes incomes;
+    FileXMLIncomes fileXMLIncomes;
 
-//    if(choice == '1') {
-//        cout << "Dodaj Przychod z dniem dzisiejszym" << endl;
         incomes = writeNewThings();
 
-        cout << "incomes.getDate()" << incomes.getDate() << endl;
-        cout << "incomes.getItem() " << incomes.getItem() << endl;
-        cout << "incomes.getAmount()" << incomes.getAmount() << endl;
-        getch();
-//    } else {
-//        cout << "Dodaj Przychod z inna data" << endl;
-//    }
-
-
     incomesVec.push_back(incomes);
-//    fileXMLIncomes.addTheRecipientToTheFile(incomes);
 
-    wyswietl();
+    fileXMLIncomes.addIncomeToTheFile(incomes);
+//    wyswietl();
     cout << endl << "Przychod dodano pomyslnie" << endl << endl;
     system("pause");
     return 0;
 
 }
 
+/*
 void AddManager::wyswietl(){
     int incomesVecSize = incomesVec.size();
     for (int i=0; i<incomesVecSize; i++){
@@ -37,7 +28,7 @@ void AddManager::wyswietl(){
         cout << "getAmount: " << incomesVec[i].getAmount() << endl;
     }
     system("pause");
-}
+} */
 
 Incomes AddManager::writeToday(){
     Incomes incomes;
@@ -48,25 +39,24 @@ Incomes AddManager::writeToday(){
     float incomesFloat;
     string amountText, amountTextDot;
 
+    incomeID++;
+    incomes.setIncomeId(incomeID);
+
+    incomes.setUserId(LOGGED_IN_USER_ID);
+
     date = getSystemDate();
-    cout << "date po sklejeniu: " << date << endl;
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     incomes.setDate(dateInt);
-    cout << "date po przeksztalceniu w INT: " << dateInt << endl;
-    getch();
+
     cout << "Czego dotyczy przychod: ";
     item = AuxiliaryMethods::loadLine();
     incomes.setItem(item);
-
-    cout << "get item: " << incomes.getItem() << endl;
-    getch();
 
     cout << "Podaj wysokosc przychodu: ";
     amountText = AuxiliaryMethods::loadLine();
     amountTextDot = checkTheComma(amountText);
 
     incomesFloat=atof(amountTextDot.c_str());
-    cout << "incomesFloat " << incomesFloat << endl;
 
     incomes.setAmount(incomesFloat);
 
@@ -81,24 +71,24 @@ Incomes AddManager::writeWithAnotherDate(string date){
     float incomesFloat;
     string amountText, amountTextDot;
 
+    incomeID++;
+    incomes.setIncomeId(incomeID);
+
+    incomes.setUserId(LOGGED_IN_USER_ID);
+
     yearMonthDay = getYearMonthDay(date);
     dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
-    cout << "date po przeksztalceniu w INT (dowolna data): " << dateInt << endl;
     incomes.setDate(dateInt);
 
     cout << "Czego dotyczy przychod: ";
     item = AuxiliaryMethods::loadLine();
     incomes.setItem(item);
 
-    cout << "get item: " << incomes.getItem() << endl;
-    getch();
-
     cout << "Podaj wysokosc przychodu: ";
     amountText = AuxiliaryMethods::loadLine();
     amountTextDot = checkTheComma(amountText);
 
     incomesFloat=atof(amountTextDot.c_str());
-    cout << "incomesFloat " << incomesFloat << endl;
 
     incomes.setAmount(incomesFloat);
 
@@ -108,14 +98,6 @@ Incomes AddManager::writeWithAnotherDate(string date){
 Incomes AddManager::writeNewThings(){
     Incomes incomes;
     string date;
-/*
-    string item;
-    string yearMonthDay = "";
-    int dateInt = 0;
-    float incomesFloat;
-    string amountText, amountTextDot; */
-
-//    user.setUserId(getNewUserId());
     char choice;
     cout << "Dodaj przychod" << endl;
     cout << "1. Z dniem dzisiejszym" << endl;
@@ -166,14 +148,6 @@ string AddManager::getSystemDate(){
     return wholeDate;
 }
 
-/*
-string AddManager::addZeroBefore(string variable, int monthToday, int dayToday){
-    if (monthToday < 10 || dayToday < 10){
-        variable = "0" + variable;
-    }
-    return variable;
-} */
-
 string AddManager::addZeroBeforeMonth(string variableMonth, int monthToday){
     if (monthToday < 10){
         variableMonth = "0" + variableMonth;
@@ -198,7 +172,5 @@ string AddManager::getYearMonthDay(string date){
         }
     }
         yearMonthDay = pojedynczaDanaUzytkownika;
-        cout << "yearMonthDay OSTATECZNY " << yearMonthDay << endl;
-        getch();
     return yearMonthDay;
 }

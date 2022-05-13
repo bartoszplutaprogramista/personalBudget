@@ -6,7 +6,6 @@ using namespace std;
 
 class Incomes{
     int incomeId;
-    int expenseId;
     int userId;
     int date;
     string item;
