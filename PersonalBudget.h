@@ -1,6 +1,7 @@
 #ifndef PERSONALBUDGET_H
 #define PERSONALBUDGET_H
 #include <iostream>
+#include <conio.h>
 #include "UserManager.h"
 #include "User.h"
 #include "AddManager.h"
@@ -12,7 +13,7 @@ using namespace std;
 
 class PersonalBudget{
     UserManager userManager;
-    AddManager addManager;
+    AddManager *addManager;
 public:
     int addIncome();
     void loadDataIntoAVector();

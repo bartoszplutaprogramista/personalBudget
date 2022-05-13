@@ -1,5 +1,4 @@
 #include "FileXMLUsers.h"
-#include "FileXMLUsers.h"
 
 void FileXMLUsers::addTheRecipientToTheFile(User user){
 

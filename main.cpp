@@ -1,7 +1,7 @@
 #include <iostream>
 #include "PersonalBudget.h"
 #include <conio.h>
-//#include "UserManager.h"
+#include "UserManager.h"
 
 using namespace std;
 
@@ -58,6 +58,7 @@ int main()
     char choice;
 //    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
     PersonalBudget personalBudget;
+    UserManager userManager;
     personalBudget.loadDataIntoAVector();
 //    UserManager userManager;
     while(true) {
@@ -72,8 +73,12 @@ int main()
             personalBudget.userRegistration();
         } else if (choice == '2') {
             personalBudget.userLoggIn();
-            cout << "getTheLoggedInUserID: " << personalBudget.getTheLoggedInUserID() << endl;
-            getch();
+//            cout << "getTheLoggedInUserID: " <<
+            personalBudget.getTheLoggedInUserID();// << endl;
+//            cout << "getTheLoggedInUserID: " << userManager.getTheLoggedInUserIDFromUserManager() << endl;
+//            getch();
+//            cout << "getTheLoggedInUserID z USER-MANAGER BEZPOSREDNIO: " << userManager.getTheLoggedInUserIDFromUserManager() << endl;
+//            getch();
             menu(personalBudget);
         } else if (choice == '3') {
             exit(0);

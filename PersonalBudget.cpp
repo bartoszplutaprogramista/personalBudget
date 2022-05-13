@@ -10,12 +10,11 @@ void PersonalBudget::loadDataIntoAVector(){
 
 int PersonalBudget::userLoggIn(){
     userManager.userLoggIn();
-
-
-//    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany()){
-//        adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-//    }
-    return 0;
+    if (userManager.isTheUserLoggedIn()){
+        addManager = new AddManager(userManager.getTheLoggedInUserID());
+        //adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
+    }
+//    return 0;
 }
 
 void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
@@ -24,11 +23,13 @@ void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
 
 int PersonalBudget::getTheLoggedInUserID(){
     userManager.getTheLoggedInUserID();
-    return userManager.getTheLoggedInUserID();
+//    cout << "getTheLoggedInUserID w PERSONAL BUDGET: " << userManager.getTheLoggedInUserID() << endl;
+//    getch();
+//    return userManager.getTheLoggedInUserID();
 }
 
 int PersonalBudget::addIncome(){
-    addManager.addIncome();
+    addManager->addIncome();
     return 0;
 }
 

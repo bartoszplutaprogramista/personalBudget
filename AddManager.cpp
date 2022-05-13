@@ -3,6 +3,7 @@
 int AddManager::addIncome(){
     system("cls");
     Incomes incomes;
+    FileXMLIncomes fileXMLIncomes;
 
 //    if(choice == '1') {
 //        cout << "Dodaj Przychod z dniem dzisiejszym" << endl;
@@ -20,6 +21,7 @@ int AddManager::addIncome(){
     incomesVec.push_back(incomes);
 //    fileXMLIncomes.addTheRecipientToTheFile(incomes);
 
+    fileXMLIncomes.addIncomeToTheFile(incomes);
     wyswietl();
     cout << endl << "Przychod dodano pomyslnie" << endl << endl;
     system("pause");
@@ -47,6 +49,17 @@ Incomes AddManager::writeToday(){
     int dateInt = 0;
     float incomesFloat;
     string amountText, amountTextDot;
+
+    cout << "INCOME ID: ";
+    incomeID++;
+    incomes.setIncomeId(incomeID);
+    cout << incomeID << endl;
+    getch();
+
+    cout << "LOGED IN USER ID: ";
+    incomes.setUserId(LOGGED_IN_USER_ID);
+    cout << LOGGED_IN_USER_ID << endl;
+    getch();
 
     date = getSystemDate();
     cout << "date po sklejeniu: " << date << endl;
@@ -81,6 +94,17 @@ Incomes AddManager::writeWithAnotherDate(string date){
     float incomesFloat;
     string amountText, amountTextDot;
 
+    cout << "INCOME ID: ";
+    incomeID++;
+    incomes.setIncomeId(incomeID);
+    cout << incomeID << endl;
+    getch();
+
+    cout << "LOGED IN USER ID: ";
+    incomes.setUserId(LOGGED_IN_USER_ID);
+    cout << LOGGED_IN_USER_ID << endl;
+    getch();
+
     yearMonthDay = getYearMonthDay(date);
     dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
     cout << "date po przeksztalceniu w INT (dowolna data): " << dateInt << endl;
@@ -105,8 +129,19 @@ Incomes AddManager::writeWithAnotherDate(string date){
     return incomes;
 }
 
+/*
+int UserManager::getNewIncomeId(){
+
+    if (users.empty() == true)
+        return 1;
+    else
+        return users.back().getUserId() + 1;
+} */
+
 Incomes AddManager::writeNewThings(){
     Incomes incomes;
+//    PersonalBudget personalBudget;
+//    UserManager userManager;
     string date;
 /*
     string item;
@@ -121,6 +156,16 @@ Incomes AddManager::writeNewThings(){
     cout << "1. Z dniem dzisiejszym" << endl;
     cout << "2. Inna data" << endl;
     cin >> choice;
+
+/*
+    cout << "userManager.getTheLoggedInUserID() w wfunkcji WriteNewThings" << userManager.getTheLoggedInUserIDFromUserManager() << endl;
+    system("pause");
+    incomes.setUserId(#); */
+
+    cout << "WARTOSC ZALOGOWANEGO UZYTKOWNIKA WYNOSI W FUNKCJI WRITE NEW THINGS: " << LOGGED_IN_USER_ID << endl;
+    getch();
+
+
 
     if (choice == '1'){
         incomes = writeToday();

@@ -125,7 +125,7 @@ int UserManager::userLoggIn(){
                     system("pause");
                     loggedInUserID = itr -> getUserId();
 //                    ustawIdZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
-                    cout << "ID ZALOGOWANEGO UZYTKOWNIKA WYNOSI: " << loggedInUserID << endl;
+                    cout << "ID ZALOGOWANEGO UZYTKOWNIKA WYNOSI w funkcji zaloguj: " << loggedInUserID << endl;
                     getch();
                     return loggedInUserID;
                 }
@@ -162,6 +162,17 @@ void UserManager::changeOfTheLoggedInUserPassword(int loggedInUserID){
 
 int UserManager::getTheLoggedInUserID(){
     return loggedInUserID;
+}
+
+int UserManager::getTheLoggedInUserIDFromUserManager(){
+    return loggedInUserID;
+}
+
+bool UserManager::isTheUserLoggedIn(){
+    if(loggedInUserID > 0)
+        return true;
+    else
+        return false;
 }
 
 /*
@@ -220,3 +231,4 @@ bool UzytkownikMenedzer::czyUzytkownikJestZalogowany(){
 void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int id){
     idZalogowanegoUzytkownika = id;
 }
+*/

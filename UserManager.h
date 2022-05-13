@@ -18,6 +18,9 @@ class UserManager{
     int loggedInUserID;
     vector <User> users;
 public:
+    UserManager(){
+        loggedInUserID = 0;
+    };
     void loadDataIntoAVector();
     void userRegistration();
     User writeNewUserData();
@@ -26,6 +29,8 @@ public:
     int userLoggIn();
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
+    int getTheLoggedInUserIDFromUserManager();
+    bool isTheUserLoggedIn();
 /*
     void wypiszWszystkichUzytkownikow();
     int logowanieUzytkownika();
