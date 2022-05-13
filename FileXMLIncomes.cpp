@@ -1,7 +1,6 @@
 #include "FileXMLIncomes.h"
 
 void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
-//    PersonalBudget personalBudget;
     string incomeIdXML = "Income";
     string iString = "";
     string amountString = "";

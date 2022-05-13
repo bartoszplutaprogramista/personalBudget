@@ -12,7 +12,6 @@
 using namespace std;
 
 class UserManager{
-//    User user;
     CMarkup xml;
     FileXMLUsers fileXMLUsers;
     int loggedInUserID;
@@ -31,13 +30,6 @@ public:
     int getTheLoggedInUserID();
     int getTheLoggedInUserIDFromUserManager();
     bool isTheUserLoggedIn();
-/*
-    void wypiszWszystkichUzytkownikow();
-    int logowanieUzytkownika();
-    bool czyUzytkownikJestZalogowany();
-    int pobierzIdZalogowanegoUzytkownika();
-    void ustawIdZalogowanegoUzytkownika(int id);
-    void wylogowanieUzytkownika(); */
 
 };
 

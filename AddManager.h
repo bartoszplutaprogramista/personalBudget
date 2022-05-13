@@ -8,16 +8,13 @@
 #include "AuxiliaryMethods.h"
 #include "FileXMLIncomes.h"
 #include "UserManager.h"
-//#include "PersonalBudget.h"
 
 using namespace std;
 
 class AddManager{
-//    Incomes incomes;
     const int LOGGED_IN_USER_ID;
     vector <Incomes> incomesVec;
     int incomeID;
-//    vector <Expenses> expensesVec;
 
 
 public:
@@ -27,7 +24,6 @@ public:
     };
     int addIncome();
     string getSystemDate();
-//    string enterDateYYYYMMDD();
     int addExpense();
     void wyswietl();
     Incomes writeNewThings();

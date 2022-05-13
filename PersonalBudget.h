@@ -21,18 +21,6 @@ public:
     int userLoggIn();
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
-
-/*
-    changeOfTheLoggedInUserPassword();
-    userLoggIn();
-    addIncome();
-    addExpense();
-    getTheLoggedInUserID();
-    setTheLoggedInUserID(int id);
-    loggOutOfTheUser();
-    displayCurrentMonthBalance();
-    displayTheBalanceForThePreviousMonth();
-    displayTheBalanceForTheSelectedPeriod(); */
 };
 
 #endif

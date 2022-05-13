@@ -21,10 +21,7 @@ void AuxiliaryMethods::deleteXMLFile(){
     if( remove( path ) == -1 ){
       cout << "Could not delete " << path;
       getch();
-    }// else {
-//        cout << "Deleted " << path << endl;
-//        getch();
-//    }
+    }
 }
 
 int AuxiliaryMethods::convertStringToInt(string number){

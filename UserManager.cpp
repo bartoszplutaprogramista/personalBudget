@@ -43,7 +43,6 @@ User UserManager::writeNewUserData(){
 
 
 int UserManager::getNewUserId(){
-//    User user;
     if (users.empty() == true)
         return 1;
     else
@@ -69,9 +68,6 @@ void UserManager::loadDataIntoAVector(){
     User user;
     CMarkup xml;
     bool fileExists = xml.Load( "users.xml" );
-//    if (!fileExists){
-//        lastUserId = 1;
-//    }
     if (fileExists){
         xml.ResetPos();
         xml.FindElem();
@@ -80,8 +76,6 @@ void UserManager::loadDataIntoAVector(){
             xml.IntoElem();
             xml.FindElem();
             user.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
-    //        cout << "USERID: " << user.getUserId() << endl;
-    //        system("pause");
             xml.FindElem();
             user.setLogin(xml.GetData());
             xml.FindElem();
@@ -124,9 +118,6 @@ int UserManager::userLoggIn(){
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     loggedInUserID = itr -> getUserId();
-//                    ustawIdZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
-                    cout << "ID ZALOGOWANEGO UZYTKOWNIKA WYNOSI w funkcji zaloguj: " << loggedInUserID << endl;
-                    getch();
                     return loggedInUserID;
                 }
             }
@@ -164,71 +155,9 @@ int UserManager::getTheLoggedInUserID(){
     return loggedInUserID;
 }
 
-int UserManager::getTheLoggedInUserIDFromUserManager(){
-    return loggedInUserID;
-}
-
 bool UserManager::isTheUserLoggedIn(){
     if(loggedInUserID > 0)
         return true;
     else
         return false;
 }
-
-/*
-void UzytkownikMenedzer::wypiszWszystkichUzytkownikow(){
-    for (int i=0; i<uzytkownicy.size(); i++){
-        cout << uzytkownicy[i].pobierzId() << endl;
-        cout << uzytkownicy[i].pobierzLogin() << endl;
-        cout << uzytkownicy[i].pobierzHaslo() << endl;
-    }
-}
-
-int UzytkownikMenedzer::logowanieUzytkownika(){
-    Uzytkownik uzytkownik;
-    MetodyPomocnicze metodyPomocnicze;
-    string login = "", haslo = "";
-    cout << endl << "Podaj login: ";
-    login = MetodyPomocnicze::wczytajLinie();
-
-    vector <Uzytkownik>::iterator itr = uzytkownicy.begin();
-    while (itr != uzytkownicy.end())
-    {
-        if (itr -> pobierzLogin() == login)
-        {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--)
-            {
-                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
-
-                if (itr -> pobierzHaslo() == haslo)
-                {
-                    cout << endl << "Zalogowales sie." << endl << endl;
-                    system("pause");
-                    idZalogowanegoUzytkownika = itr -> pobierzId();
-                    ustawIdZalogowanegoUzytkownika(idZalogowanegoUzytkownika);
-                    return idZalogowanegoUzytkownika;
-                }
-            }
-            cout << "Wprowadzono 3 razy bledne haslo." << endl;
-            system("pause");
-            return 0;
-        }
-        itr++;
-    }
-    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
-    system("pause");
-    return 0;
-}
-
-bool UzytkownikMenedzer::czyUzytkownikJestZalogowany(){
-    if(idZalogowanegoUzytkownika > 0)
-        return true;
-    else
-        return false;
-}
-
-void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int id){
-    idZalogowanegoUzytkownika = id;
-}
-*/
