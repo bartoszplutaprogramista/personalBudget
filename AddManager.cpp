@@ -30,6 +30,21 @@ void AddManager::wyswietl(){
     system("pause");
 } */
 
+int AddManager::getIDOfNewUser(){
+    FileXMLIncomes fileXMLIncomes;
+    int help = 0;
+    int help2 = 0;
+        help2 = fileXMLIncomes.getLastNumberOfIncomeID();
+    if ( help2 == 0)
+        return 1;
+    else
+        help = fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+ //       return fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+        return help;
+//        return incomesVec.back().getIncomeId() + 1;
+//fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+}
+
 Incomes AddManager::writeToday(){
     Incomes incomes;
     string date;
@@ -39,7 +54,10 @@ Incomes AddManager::writeToday(){
     float incomesFloat;
     string amountText, amountTextDot;
 
-    incomeID++;
+
+    incomeID = getIDOfNewUser();
+//    cout << "incomeID W TEJ FUNKCJI: " << incomeID << endl;
+//    getch();
     incomes.setIncomeId(incomeID);
 
     incomes.setUserId(LOGGED_IN_USER_ID);
@@ -71,7 +89,7 @@ Incomes AddManager::writeWithAnotherDate(string date){
     float incomesFloat;
     string amountText, amountTextDot;
 
-    incomeID++;
+    incomeID = getIDOfNewUser();
     incomes.setIncomeId(incomeID);
 
     incomes.setUserId(LOGGED_IN_USER_ID);
@@ -173,4 +191,20 @@ string AddManager::getYearMonthDay(string date){
     }
         yearMonthDay = pojedynczaDanaUzytkownika;
     return yearMonthDay;
+}
+
+void AddManager::loadDataOfIncomesIntoAVector(){
+    FileXMLIncomes fileXMLIncomes;
+
+    incomesVec = fileXMLIncomes.loadDataOfIncomesIntoAnAuxiliaryVector(LOGGED_IN_USER_ID);
+
+    /*
+        for (int i=0; i<incomesVec.size(); i++){
+            cout << "incomeId PO ZALADOWANIU: " << incomesVec[i].getIncomeId() << endl;
+            cout << "userId PO ZALADOWANIU: " << incomesVec[i].getUserId() << endl;
+            cout << "date PO ZALADOWANIU: " << incomesVec[i].getDate() << endl;
+            cout << "item PO ZALADOWANIU:  " << incomesVec[i].getItem() << endl;
+            cout << "amount PO ZALADOWANIU: " << incomesVec[i].getAmount() << endl;
+        }
+        getch(); */
 }

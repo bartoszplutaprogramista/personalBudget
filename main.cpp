@@ -45,8 +45,7 @@ int menu(PersonalBudget &personalBudget){
 //            getch();
         } else if (choiceMenu == '7') {
 //            personalBudget.loggOutOfTheUser();
-            cout << "7. Wyloguj sie" << endl;
-            getch();
+            personalBudget.loggOutOfTheUser();
             return 0;
         }
     }

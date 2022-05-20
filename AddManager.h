@@ -33,6 +33,8 @@ public:
     string addZeroBeforeDay(string variable, int dayToday);
     string getYearMonthDay(string date);
     string checkTheComma(string amountText);
+    void loadDataOfIncomesIntoAVector();
+    int getIDOfNewUser();
 };
 
 #endif

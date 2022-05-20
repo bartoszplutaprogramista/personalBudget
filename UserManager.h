@@ -30,6 +30,7 @@ public:
     int getTheLoggedInUserID();
     int getTheLoggedInUserIDFromUserManager();
     bool isTheUserLoggedIn();
+    void loggOutOfTheUser();
 
 };
 

@@ -63,8 +63,6 @@ bool UserManager::isThereALogin(string login)
 }
 
 void UserManager::loadDataIntoAVector(){
-    cout << "WSZEDLEM DO TEGO IFA" << endl;
-    system("pause");
     User user;
     CMarkup xml;
     bool fileExists = xml.Load( "users.xml" );
@@ -160,4 +158,8 @@ bool UserManager::isTheUserLoggedIn(){
         return true;
     else
         return false;
+}
+
+void UserManager::loggOutOfTheUser(){
+    loggedInUserID = 0;
 }

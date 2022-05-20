@@ -21,6 +21,7 @@ public:
     int userLoggIn();
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
+    void loggOutOfTheUser();
 };
 
 #endif
