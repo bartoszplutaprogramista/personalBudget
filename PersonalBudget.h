@@ -16,6 +16,7 @@ class PersonalBudget{
     AddManager *addManager;
 public:
     int addIncome();
+    int addExpense();
     void loadDataIntoAVector();
     void userRegistration();
     int userLoggIn();

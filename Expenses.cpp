@@ -8,13 +8,13 @@ void Expenses::setUserId(int newUserId){
     if (newUserId >= 0)
     userId = newUserId;
 }
-void Expenses::setDate(string newDate){
+void Expenses::setDate(int newDate){
     date = newDate;
 }
 void Expenses::setItem(string newItem){
     item = newItem;
 }
-void Expenses::setAmount(string newAmount){
+void Expenses::setAmount(float newAmount){
     amount = newAmount;
 }
 int Expenses::getExpensesId(){
@@ -23,12 +23,12 @@ int Expenses::getExpensesId(){
 int Expenses::getUserId(){
     return userId;
 }
-string Expenses::getDate(){
+int Expenses::getDate(){
     return date;
 }
 string Expenses::getItem(){
     return item;
 }
-string Expenses::getAmount(){
+float Expenses::getAmount(){
     return amount;
 }

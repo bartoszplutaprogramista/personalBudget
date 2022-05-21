@@ -24,9 +24,7 @@ int menu(PersonalBudget &personalBudget){
 //            cout << "1. Dodaj przychod" << endl;
 //            getch();
         } else if (choiceMenu == '2') {
-//            personalBudget.addExpense();
-            cout << "2. Dodaj wydatek" << endl;
-            getch();
+            personalBudget.addExpense();
         } else if (choiceMenu == '3') {
 //            personalBudget.displayCurrentMonthBalance();
             cout << "3. Bilans z biezacego miesiaca" << endl;

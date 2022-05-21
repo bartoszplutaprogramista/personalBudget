@@ -13,6 +13,7 @@ int PersonalBudget::userLoggIn(){
     if (userManager.isTheUserLoggedIn()){
         addManager = new AddManager(userManager.getTheLoggedInUserID());
         addManager->loadDataOfIncomesIntoAVector();
+        addManager->loadDataOfExpensesIntoAVector();
     }
 }
 
@@ -26,6 +27,11 @@ int PersonalBudget::getTheLoggedInUserID(){
 
 int PersonalBudget::addIncome(){
     addManager->addIncome();
+    return 0;
+}
+
+int PersonalBudget::addExpense(){
+    addManager->addExpense();
     return 0;
 }
 

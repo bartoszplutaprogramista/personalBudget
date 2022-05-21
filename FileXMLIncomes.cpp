@@ -77,7 +77,6 @@ int FileXMLIncomes::getLastNumberOfIncomeID(){
     getch();
     Incomes incomes;
     CMarkup xml;
-    vector <Incomes> incomesAuxiliary;
     bool fileExists = xml.Load( "incomes.xml" );
     if (fileExists){
         xml.ResetPos();
