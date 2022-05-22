@@ -1,5 +1,130 @@
 #include "AddManager.h"
 
+int AddManager::addExpense(){
+    system("cls");
+    Expenses expenses;
+    FileXMLExpenses fileXMLExpenses;
+
+        expenses = writeNewThingsOfExpenses();
+
+    expensesVec.push_back(expenses);
+
+    fileXMLExpenses.addExpenseToTheFile(expenses);
+//    wyswietl();
+    cout << endl << "Wydatek dodano pomyslnie" << endl << endl;
+    system("pause");
+    return 0;
+
+}
+
+Expenses AddManager::writeNewThingsOfExpenses(){
+    Expenses expenses;
+    string date;
+    char choice;
+    cout << "Dodaj wydatek" << endl;
+    cout << "1. Z dniem dzisiejszym" << endl;
+    cout << "2. Inna data" << endl;
+    cin >> choice;
+
+    if (choice == '1'){
+        expenses = writeTodayExpenses();
+    } else {
+        cout << "Wprowadz date format RRRR-MM-DD: ";
+        date = AuxiliaryMethods::loadLine();
+        if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
+            expenses = writeWithAnotherDateOfExpenses(date);
+        } else {
+            system("cls");
+            expenses = writeNewThingsOfExpenses();
+        }
+    }
+return expenses;
+}
+
+int AddManager::getIDOfNewUserOfExpenses(){
+    FileXMLExpenses fileXMLExpenses;
+    int help = 0;
+    int help2 = 0;
+        help2 = fileXMLExpenses.getLastNumberOfExpenseID();
+    if ( help2 == 0)
+        return 1;
+    else
+        help = fileXMLExpenses.getLastNumberOfExpenseID() + 1;
+ //       return fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+        return help;
+//        return incomesVec.back().getIncomeId() + 1;
+//fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+}
+
+Expenses AddManager::writeWithAnotherDateOfExpenses(string date){
+    Expenses expenses;
+    string item;
+    string yearMonthDay = "";
+    int dateInt = 0;
+    float expensesFloat;
+    string amountText, amountTextDot;
+
+    expenseID = getIDOfNewUserOfExpenses();
+    expenses.setExpensesId(expenseID);
+
+    expenses.setUserId(LOGGED_IN_USER_ID);
+
+    yearMonthDay = getYearMonthDay(date);
+    dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
+    expenses.setDate(dateInt);
+
+    cout << "Czego dotyczy wydatek: ";
+    item = AuxiliaryMethods::loadLine();
+    expenses.setItem(item);
+
+    cout << "Podaj wysokosc wydatku: ";
+    amountText = AuxiliaryMethods::loadLine();
+    amountTextDot = checkTheComma(amountText);
+
+    expensesFloat=atof(amountTextDot.c_str());
+
+    expenses.setAmount(expensesFloat);
+
+    return expenses;
+}
+
+Expenses AddManager::writeTodayExpenses(){
+    Expenses expenses;
+    string date;
+    string item;
+    string yearMonthDay = "";
+    int dateInt = 0;
+    float expensesFloat;
+    string amountText, amountTextDot;
+
+
+    expenseID = getIDOfNewUserOfExpenses();
+//    cout << "incomeID W TEJ FUNKCJI: " << incomeID << endl;
+//    getch();
+    expenses.setExpensesId(expenseID);
+
+    expenses.setUserId(LOGGED_IN_USER_ID);
+
+    date = getSystemDate();
+    dateInt = AuxiliaryMethods::convertStringToInt(date);
+    expenses.setDate(dateInt);
+
+    cout << "Czego dotyczy wydatek: ";
+    item = AuxiliaryMethods::loadLine();
+    expenses.setItem(item);
+
+    cout << "Podaj wysokosc wydatku: ";
+    amountText = AuxiliaryMethods::loadLine();
+    amountTextDot = checkTheComma(amountText);
+
+    expensesFloat=atof(amountTextDot.c_str());
+
+    expenses.setAmount(expensesFloat);
+
+    return expenses;
+}
+
+
 int AddManager::addIncome(){
     system("cls");
     Incomes incomes;
@@ -30,6 +155,21 @@ void AddManager::wyswietl(){
     system("pause");
 } */
 
+int AddManager::getIDOfNewUser(){
+    FileXMLIncomes fileXMLIncomes;
+    int help = 0;
+    int help2 = 0;
+        help2 = fileXMLIncomes.getLastNumberOfIncomeID();
+    if ( help2 == 0)
+        return 1;
+    else
+        help = fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+ //       return fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+        return help;
+//        return incomesVec.back().getIncomeId() + 1;
+//fileXMLIncomes.getLastNumberOfIncomeID() + 1;
+}
+
 Incomes AddManager::writeToday(){
     Incomes incomes;
     string date;
@@ -39,7 +179,10 @@ Incomes AddManager::writeToday(){
     float incomesFloat;
     string amountText, amountTextDot;
 
-    incomeID++;
+
+    incomeID = getIDOfNewUser();
+//    cout << "incomeID W TEJ FUNKCJI: " << incomeID << endl;
+//    getch();
     incomes.setIncomeId(incomeID);
 
     incomes.setUserId(LOGGED_IN_USER_ID);
@@ -71,7 +214,7 @@ Incomes AddManager::writeWithAnotherDate(string date){
     float incomesFloat;
     string amountText, amountTextDot;
 
-    incomeID++;
+    incomeID = getIDOfNewUser();
     incomes.setIncomeId(incomeID);
 
     incomes.setUserId(LOGGED_IN_USER_ID);
@@ -173,4 +316,36 @@ string AddManager::getYearMonthDay(string date){
     }
         yearMonthDay = pojedynczaDanaUzytkownika;
     return yearMonthDay;
+}
+
+void AddManager::loadDataOfIncomesIntoAVector(){
+    FileXMLIncomes fileXMLIncomes;
+
+    incomesVec = fileXMLIncomes.loadDataOfIncomesIntoAnAuxiliaryVector(LOGGED_IN_USER_ID);
+
+    /*
+        for (int i=0; i<incomesVec.size(); i++){
+            cout << "incomeId PO ZALADOWANIU: " << incomesVec[i].getIncomeId() << endl;
+            cout << "userId PO ZALADOWANIU: " << incomesVec[i].getUserId() << endl;
+            cout << "date PO ZALADOWANIU: " << incomesVec[i].getDate() << endl;
+            cout << "item PO ZALADOWANIU:  " << incomesVec[i].getItem() << endl;
+            cout << "amount PO ZALADOWANIU: " << incomesVec[i].getAmount() << endl;
+        }
+        getch(); */
+}
+
+void AddManager::loadDataOfExpensesIntoAVector(){
+    FileXMLExpenses fileXMLExpenses;
+
+    expensesVec = fileXMLExpenses.loadDataOfExpensesIntoAnAuxiliaryVector(LOGGED_IN_USER_ID);
+
+    /*
+        for (int i=0; i<incomesVec.size(); i++){
+            cout << "incomeId PO ZALADOWANIU: " << incomesVec[i].getIncomeId() << endl;
+            cout << "userId PO ZALADOWANIU: " << incomesVec[i].getUserId() << endl;
+            cout << "date PO ZALADOWANIU: " << incomesVec[i].getDate() << endl;
+            cout << "item PO ZALADOWANIU:  " << incomesVec[i].getItem() << endl;
+            cout << "amount PO ZALADOWANIU: " << incomesVec[i].getAmount() << endl;
+        }
+        getch(); */
 }

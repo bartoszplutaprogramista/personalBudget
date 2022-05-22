@@ -28,4 +28,11 @@
 <name >Kondrad</name >
 <surname >Walewski</surname >
 </User4>
+<User5>
+<UserId >5</UserId >
+<login >wuj</login >
+<password >wuj</password >
+<name >Wujek</name >
+<surname >Wujek</surname >
+</User5>
 </Users>
