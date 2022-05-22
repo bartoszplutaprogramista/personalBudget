@@ -73,8 +73,6 @@ vector <Expenses> FileXMLExpenses::loadDataOfExpensesIntoAnAuxiliaryVector(const
 }
 
 int FileXMLExpenses::getLastNumberOfExpenseID(){
-    cout << "WSZEDLEM DO GET LAST NUMBER" << endl;
-    getch();
     Expenses expenses;
     CMarkup xml;
     bool fileExists = xml.Load( "expenses.xml" );
@@ -97,7 +95,5 @@ int FileXMLExpenses::getLastNumberOfExpenseID(){
             xml.OutOfElem();
         }
     }
-    cout << "expenses.getExpenseId() " << expenses.getExpensesId() << endl;
-    getch();
     return expenses.getExpensesId();
 }
