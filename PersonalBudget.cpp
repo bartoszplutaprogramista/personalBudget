@@ -42,3 +42,8 @@ void PersonalBudget::loggOutOfTheUser(){
     cout << "Wylogowano poprawnie" << endl;
     getch();
 }
+
+void PersonalBudget::displayBalanceSheetForTheCurrentMonth(){
+    incomesVecBalance = addManager->getIncomesVec();
+    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance);
+}

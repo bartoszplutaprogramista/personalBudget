@@ -45,6 +45,11 @@ public:
     void loadDataOfIncomesIntoAVector();
     void loadDataOfExpensesIntoAVector();
     int getIDOfNewUser();
+
+    vector <Incomes> getIncomesVec();
+    vector <Expenses> getExpensesVec();
+    int getLOGGED_IN_USER_ID();
+
 };
 
 #endif

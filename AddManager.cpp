@@ -349,3 +349,15 @@ void AddManager::loadDataOfExpensesIntoAVector(){
         }
         getch(); */
 }
+
+vector <Incomes> AddManager::getIncomesVec(){
+    return incomesVec;
+}
+
+vector <Expenses> AddManager::getExpensesVec(){
+    return expensesVec;
+}
+
+int AddManager::getLOGGED_IN_USER_ID(){
+    return LOGGED_IN_USER_ID;
+}

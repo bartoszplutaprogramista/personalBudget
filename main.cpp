@@ -21,14 +21,12 @@ int menu(PersonalBudget &personalBudget){
         cin >> choiceMenu;
         if(choiceMenu == '1') {
             personalBudget.addIncome();
-//            cout << "1. Dodaj przychod" << endl;
-//            getch();
         } else if (choiceMenu == '2') {
             personalBudget.addExpense();
         } else if (choiceMenu == '3') {
-//            personalBudget.displayCurrentMonthBalance();
-            cout << "3. Bilans z biezacego miesiaca" << endl;
-            getch();
+            personalBudget.displayBalanceSheetForTheCurrentMonth();
+//            cout << "3. Bilans z biezacego miesiaca" << endl;
+//            getch();
         } else if (choiceMenu == '4') {
  //           personalBudget.displayTheBalanceForThePreviousMonth();
             cout << "4. Bilans z poprzedniego miesisca" << endl;
