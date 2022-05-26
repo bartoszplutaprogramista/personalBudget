@@ -16,14 +16,23 @@ struct Comparison{
     }
 };
 
+struct ComparisonExpenses{
+    inline bool operator() (Expenses& structExpenses1, Expenses& structExpenses2)
+    {
+        return (structExpenses1.getDate() < structExpenses2.getDate());
+    }
+};
+
 class BalanceManager{
     vector <Incomes> incomesVecBalance;
+    vector <Expenses> expensesVecBalance;
 
 public:
 //    BalanceManager(){
 //        incomesVecBalance = addManager.getIncomesVec();
 //    };
-    void displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance);
+    float displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt);
+    float displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt);
     void displayBalanceSheetForTheCurrentMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance);
 };
 
