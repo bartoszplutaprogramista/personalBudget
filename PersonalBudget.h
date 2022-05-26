@@ -16,6 +16,7 @@ class PersonalBudget{
     UserManager userManager;
     AddManager *addManager;
     vector <Incomes> incomesVecBalance;
+    vector <Expenses> expensesVecBalance;
     BalanceManager balanceManager;
 public:
     int addIncome();

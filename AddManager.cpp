@@ -105,7 +105,7 @@ Expenses AddManager::writeTodayExpenses(){
 
     expenses.setUserId(LOGGED_IN_USER_ID);
 
-    date = getSystemDate();
+    date = AuxiliaryMethods::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     expenses.setDate(dateInt);
 
@@ -187,7 +187,7 @@ Incomes AddManager::writeToday(){
 
     incomes.setUserId(LOGGED_IN_USER_ID);
 
-    date = getSystemDate();
+    date = AuxiliaryMethods::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     incomes.setDate(dateInt);
 
@@ -271,6 +271,7 @@ string AddManager::checkTheComma(string amountText){
     return amountText;
 }
 
+/*
 string AddManager::getSystemDate(){
     int yearToday = 0, monthToday = 0, dayToday = 0;
     string year = "", month = "", day = "";
@@ -290,20 +291,25 @@ string AddManager::getSystemDate(){
 
     return wholeDate;
 }
+*/
 
+/*
 string AddManager::addZeroBeforeMonth(string variableMonth, int monthToday){
     if (monthToday < 10){
         variableMonth = "0" + variableMonth;
     }
     return variableMonth;
 }
+*/
 
+/*
 string AddManager::addZeroBeforeDay(string variableDay, int dayToday){
     if (dayToday < 10){
         variableDay = "0" + variableDay;
     }
     return variableDay;
 }
+*/
 
 string AddManager::getYearMonthDay(string date){
     string yearMonthDay;

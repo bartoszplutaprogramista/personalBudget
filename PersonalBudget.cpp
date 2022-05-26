@@ -45,5 +45,6 @@ void PersonalBudget::loggOutOfTheUser(){
 
 void PersonalBudget::displayBalanceSheetForTheCurrentMonth(){
     incomesVecBalance = addManager->getIncomesVec();
-    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance);
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance, expensesVecBalance);
 }
