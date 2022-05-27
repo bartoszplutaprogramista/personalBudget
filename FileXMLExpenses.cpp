@@ -95,5 +95,8 @@ int FileXMLExpenses::getLastNumberOfExpenseID(){
             xml.OutOfElem();
         }
     }
+    else {
+        expenses.setExpensesId(0);
+    }
     return expenses.getExpensesId();
 }

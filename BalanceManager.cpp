@@ -2,8 +2,9 @@
 
 float BalanceManager::displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt){
     string dateFromIncomesVec="", dateFromIncomesVecDeleted="";
-    int dateIntFromIncomesVecDeleted = 0;
+    int dateIntFromIncomesVecDeleted = 0, counter = 0;
     float incomesAmountTotal = 0;
+
 
     cout << "TWOJE PRZYCHODY Z BIEZACEGO MIESIACA: " << endl;
 
@@ -19,15 +20,20 @@ float BalanceManager::displayIncomesForTheCurrentMonth(vector <Incomes> incomesV
             cout << "Kwota: " << incomesVecBalance[i].getAmount() << endl;
             cout << endl;
             incomesAmountTotal += incomesVecBalance[i].getAmount();
+            counter++;
         }
     }
     getch();
+    if (counter == 0){
+        cout << "Nie wprowadzono zadnych przychodow w biezacym miesiacu" << endl;
+        getch();
+    }
     return incomesAmountTotal;
 }
 
 float BalanceManager::displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt){
     string dateFromExpensesVec="", dateFromExpensesVecDeleted="";
-    int dateIntFromExpensesVecDeleted = 0;
+    int dateIntFromExpensesVecDeleted = 0, counter = 0;
     float expansesAmountTotal = 0;
 
 //    dateInt = AuxiliaryMethods::convertStringToInt(date);
@@ -44,11 +50,16 @@ float BalanceManager::displayExpensesForTheCurrentMonth(vector <Expenses> expens
             cout << "Data: " << expensesVecBalance[i].getDate() << endl;
             cout << "Przychod:  " << expensesVecBalance[i].getItem() << endl;
             cout << "Kwota: " << expensesVecBalance[i].getAmount() << endl;
-            expansesAmountTotal += expensesVecBalance[i].getAmount();
             cout << endl;
+            expansesAmountTotal += expensesVecBalance[i].getAmount();
+            counter++;
         }
     }
     getch();
+    if (counter == 0){
+        cout << "Nie wprowadzono zadnych wydatkow w biezacym miesiacu" << endl;
+        getch();
+    }
     return expansesAmountTotal;
 }
 

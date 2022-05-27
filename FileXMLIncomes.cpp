@@ -97,6 +97,9 @@ int FileXMLIncomes::getLastNumberOfIncomeID(){
             xml.OutOfElem();
         }
     }
+    else {
+        incomes.setIncomeId(0);
+    }
     cout << "incomes.getIncomeId() " << incomes.getIncomeId() << endl;
     getch();
     return incomes.getIncomeId();
