@@ -24,13 +24,9 @@ int menu(PersonalBudget &personalBudget){
         } else if (choiceMenu == '2') {
             personalBudget.addExpense();
         } else if (choiceMenu == '3') {
-            personalBudget.displayBalanceSheetForTheCurrentMonth();
-//            cout << "3. Bilans z biezacego miesiaca" << endl;
-//            getch();
+            personalBudget.displayBalanceSheetForTheCurrentMonth(choiceMenu);
         } else if (choiceMenu == '4') {
- //           personalBudget.displayTheBalanceForThePreviousMonth();
-            cout << "4. Bilans z poprzedniego miesisca" << endl;
-            getch();
+            personalBudget.displayTheBalanceSheetForThePreviousMonth(choiceMenu);
         } else if (choiceMenu == '5') {
 //            personalBudget.displayTheBalanceForTheSelectedPeriod();
             cout << "5. Bilans z wybranego okresu" << endl;

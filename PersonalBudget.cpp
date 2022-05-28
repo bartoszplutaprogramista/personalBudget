@@ -43,8 +43,14 @@ void PersonalBudget::loggOutOfTheUser(){
     getch();
 }
 
-void PersonalBudget::displayBalanceSheetForTheCurrentMonth(){
+void PersonalBudget::displayBalanceSheetForTheCurrentMonth(char choiceMenu){
     incomesVecBalance = addManager->getIncomesVec();
     expensesVecBalance = addManager->getExpensesVec();
-    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance, expensesVecBalance);
+    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance, expensesVecBalance, choiceMenu);
+}
+
+void PersonalBudget::displayTheBalanceSheetForThePreviousMonth(char choiceMenu){
+    incomesVecBalance = addManager->getIncomesVec();
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayTheBalanceSheetForThePreviousMonth(incomesVecBalance, expensesVecBalance, choiceMenu);
 }

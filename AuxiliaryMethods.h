@@ -22,6 +22,7 @@ public:
     static string addZeroBeforeMonth(string variableMonth, int monthToday);
     static string addZeroBeforeDay(string variableDay, int dayToday);
     static string deleteTheLastTwoDigits(string deletingString);
+    static string deleteFourFirstDigits(string deletingString);
 };
 
 #endif

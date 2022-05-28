@@ -79,3 +79,8 @@ string AuxiliaryMethods::deleteTheLastTwoDigits(string deletingString){
     deletingString.erase (6,2);
     return deletingString;
 }
+
+string AuxiliaryMethods::deleteFourFirstDigits(string deletingString){
+    deletingString.erase (0,4);
+    return deletingString;
+}

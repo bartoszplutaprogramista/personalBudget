@@ -29,8 +29,8 @@ public:
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
     void loggOutOfTheUser();
-    void displayBalanceSheetForTheCurrentMonth();
-
+    void displayBalanceSheetForTheCurrentMonth(char choiceMenu);
+    void displayTheBalanceSheetForThePreviousMonth(char choiceMenu);
 };
 
 #endif

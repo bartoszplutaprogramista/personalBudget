@@ -31,9 +31,11 @@ public:
 //    BalanceManager(){
 //        incomesVecBalance = addManager.getIncomesVec();
 //    };
-    float displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt);
-    float displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt);
-    void displayBalanceSheetForTheCurrentMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance);
+    bool checkJanuary(string help);
+    void displayTheBalanceSheetForThePreviousMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu);
+    float displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu);
+    float displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu);
+    void displayBalanceSheetForTheCurrentMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu);
 };
 
 #endif
