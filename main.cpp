@@ -28,15 +28,10 @@ int menu(PersonalBudget &personalBudget){
         } else if (choiceMenu == '4') {
             personalBudget.displayTheBalanceSheetForThePreviousMonth(choiceMenu);
         } else if (choiceMenu == '5') {
-//            personalBudget.displayTheBalanceForTheSelectedPeriod();
-            cout << "5. Bilans z wybranego okresu" << endl;
-            getch();
+            personalBudget.displayTheBalanceForTheSelectedPeriod();
         } else if (choiceMenu == '6') {
             personalBudget.changeOfTheLoggedInUserPassword(personalBudget.getTheLoggedInUserID());
-//            cout << "6. Zmien haslo" << endl;
-//            getch();
         } else if (choiceMenu == '7') {
-//            personalBudget.loggOutOfTheUser();
             personalBudget.loggOutOfTheUser();
             return 0;
         }

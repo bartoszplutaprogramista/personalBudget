@@ -186,4 +186,77 @@ void BalanceManager::displayTheBalanceSheetForThePreviousMonth(vector <Incomes> 
 
 }
 
+float BalanceManager::showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Incomes> incomesVecBalance, int firstDateInt, int secondDateInt){
+    int counter = 0;
+    float incomesAmountTotal = 0;
+    for (int i=0; i<incomesVecBalance.size(); i++){
+        if (incomesVecBalance[i].getDate() >= firstDateInt && incomesVecBalance[i].getDate() <= secondDateInt){
+            cout << "Data: " << incomesVecBalance[i].getDate() << endl;
+            cout << "Przychod:  " << incomesVecBalance[i].getItem() << endl;
+            cout << "Kwota: " << incomesVecBalance[i].getAmount() << endl;
+            cout << endl;
+            incomesAmountTotal += incomesVecBalance[i].getAmount();
+            counter++;
+        }
+    }
+    if (counter == 0){
+        cout << "Nie wprowadzono zadnych przychodow w tym okresie" << endl;
+    }
+    getch();
+    return incomesAmountTotal;
+}
+
+float BalanceManager::showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Expenses> expensesVecBalance, int firstDateInt, int secondDateInt){
+    int counter = 0;
+    float expensesAmountTotal = 0;
+    for (int i=0; i<expensesVecBalance.size(); i++){
+        if (expensesVecBalance[i].getDate() >= firstDateInt && expensesVecBalance[i].getDate() <= secondDateInt){
+            cout << "Data: " << expensesVecBalance[i].getDate() << endl;
+            cout << "Wydatek:  " << expensesVecBalance[i].getItem() << endl;
+            cout << "Kwota: " << expensesVecBalance[i].getAmount() << endl;
+            cout << endl;
+            expensesAmountTotal += expensesVecBalance[i].getAmount();
+            counter++;
+        }
+    }
+    if (counter == 0){
+        cout << "Nie wprowadzono zadnych wydatkow w tym okresie" << endl;
+    }
+    getch();
+    return expensesAmountTotal;
+}
+
+void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance){
+    system("cls");
+    string selectedPeriod = "", twoJoinedDates = "", firstDate = "", secondDate = "";
+    int firstDateInt = 0, secondDateInt = 0;
+    float incomesAmountTotalPeriod = 0, expensesAmountTotalPeriod = 0, differenceBetweenIncomesAndExpensesInPeriodOfTime = 0;
+    cout << "Wprowadz okres z ktorego chcesz rozliczenie format RRRR-MM-DD-RRRR-MM-DD: ";
+    cout << endl;
+    getch();
+    selectedPeriod = AuxiliaryMethods::loadLine();
+    if (AuxiliaryMethods::checkWetherSelectedPeriodIsGood(selectedPeriod)==true){
+        twoJoinedDates = AuxiliaryMethods::getTwoDatesFromSelectedPeriod(selectedPeriod);
+        firstDate = AuxiliaryMethods::divideStringAndSaveFirstDate(twoJoinedDates);
+        secondDate = AuxiliaryMethods::divideStringAndSaveSecondDate(twoJoinedDates);
+        firstDateInt = AuxiliaryMethods::convertStringToInt(firstDate);
+        secondDateInt = AuxiliaryMethods::convertStringToInt(secondDate);
+        incomesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodIncomes(incomesVecBalance, firstDateInt, secondDateInt);
+        expensesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodExpenses(expensesVecBalance, firstDateInt, secondDateInt);
+    }else {
+        displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
+    }
+    cout << endl;
+    cout << "Suma PRZYCHODOW z wybranego okresu: " << incomesAmountTotalPeriod << endl;
+
+    cout << "Suma WYDATKOW z wybranego okresu: " << expensesAmountTotalPeriod << endl;
+
+    differenceBetweenIncomesAndExpensesInPeriodOfTime = incomesAmountTotalPeriod - expensesAmountTotalPeriod;
+
+    cout << "Roznica pomiedzy przychodami a wydatkami z wybranego okresu: " << differenceBetweenIncomesAndExpensesInPeriodOfTime << endl;
+    getch();
+
+
+}
+
 

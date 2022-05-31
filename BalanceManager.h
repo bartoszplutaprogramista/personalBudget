@@ -36,6 +36,10 @@ public:
     float displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu);
     float displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu);
     void displayBalanceSheetForTheCurrentMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu);
+    void displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance);
+    float showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Incomes> incomesVecBalance, int firstDateInt, int secondDateInt);
+    float showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Expenses> expensesVecBalance, int firstDateInt, int secondDateInt);
+
 };
 
 #endif

@@ -23,6 +23,11 @@ public:
     static string addZeroBeforeDay(string variableDay, int dayToday);
     static string deleteTheLastTwoDigits(string deletingString);
     static string deleteFourFirstDigits(string deletingString);
+    static bool checkWetherSelectedPeriodIsGood(string datePeriod);
+    static string getTwoDatesFromSelectedPeriod(string datePeriod);
+    static string divideStringAndSaveFirstDate(string joinedDate);
+    static string divideStringAndSaveSecondDate(string joinedDate);
+
 };
 
 #endif

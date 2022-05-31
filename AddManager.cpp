@@ -313,14 +313,14 @@ string AddManager::addZeroBeforeDay(string variableDay, int dayToday){
 
 string AddManager::getYearMonthDay(string date){
     string yearMonthDay;
-    string pojedynczaDanaUzytkownika = "";
+    string singleUserData = "";
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < date.length(); pozycjaZnaku++){
-        if (date[pozycjaZnaku] != '-'){
-            pojedynczaDanaUzytkownika += date[pozycjaZnaku];
+    for (int markPosition = 0; markPosition < date.length(); markPosition++){
+        if (date[markPosition] != '-'){
+            singleUserData += date[markPosition];
         }
     }
-        yearMonthDay = pojedynczaDanaUzytkownika;
+        yearMonthDay = singleUserData;
     return yearMonthDay;
 }
 

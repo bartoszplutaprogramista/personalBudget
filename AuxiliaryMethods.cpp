@@ -84,3 +84,38 @@ string AuxiliaryMethods::deleteFourFirstDigits(string deletingString){
     deletingString.erase (0,4);
     return deletingString;
 }
+
+bool AuxiliaryMethods::checkWetherSelectedPeriodIsGood(string datePeriod){
+    if (datePeriod[4] != '-' || datePeriod[7] != '-' || datePeriod[10] != '-' || datePeriod[15] != '-' || datePeriod[18] != '-'){
+        cout << "Zly format okresu rozliczeniowego sproboj jeszcze raz " << endl;
+        system("pause");
+        system("cls");
+        return false;
+    }
+    return true;
+}
+
+string AuxiliaryMethods::getTwoDatesFromSelectedPeriod(string datePeriod){
+    string yearMonthDay;
+    string singleUserData = "";
+
+    for (int markPosition = 0; markPosition < datePeriod.length(); markPosition++){
+        if (datePeriod[markPosition] != '-'){
+            singleUserData += datePeriod[markPosition];
+        }
+    }
+        yearMonthDay = singleUserData;
+    return yearMonthDay;
+}
+
+
+string AuxiliaryMethods::divideStringAndSaveFirstDate(string joinedDate){
+    joinedDate.erase (8,8);
+    return joinedDate;
+}
+
+string AuxiliaryMethods::divideStringAndSaveSecondDate(string joinedDate){
+    joinedDate.erase (0,8);
+    return joinedDate;
+}
+

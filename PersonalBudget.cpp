@@ -54,3 +54,9 @@ void PersonalBudget::displayTheBalanceSheetForThePreviousMonth(char choiceMenu){
     expensesVecBalance = addManager->getExpensesVec();
     balanceManager.displayTheBalanceSheetForThePreviousMonth(incomesVecBalance, expensesVecBalance, choiceMenu);
 }
+
+void PersonalBudget::displayTheBalanceForTheSelectedPeriod(){
+    incomesVecBalance = addManager->getIncomesVec();
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
+}

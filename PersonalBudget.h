@@ -31,6 +31,7 @@ public:
     void loggOutOfTheUser();
     void displayBalanceSheetForTheCurrentMonth(char choiceMenu);
     void displayTheBalanceSheetForThePreviousMonth(char choiceMenu);
+    void displayTheBalanceForTheSelectedPeriod();
 };
 
 #endif
