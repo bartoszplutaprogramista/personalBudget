@@ -189,9 +189,13 @@ void BalanceManager::displayTheBalanceSheetForThePreviousMonth(vector <Incomes> 
 float BalanceManager::showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Incomes> incomesVecBalance, int firstDateInt, int secondDateInt){
     int counter = 0;
     float incomesAmountTotal = 0;
+    string incomesDateOfSelectedPeriod = "", incomesDateOfSelectedPeriodWithDashes = "";
+    sort(incomesVecBalance.begin(), incomesVecBalance.end(), Comparison());
     for (int i=0; i<incomesVecBalance.size(); i++){
         if (incomesVecBalance[i].getDate() >= firstDateInt && incomesVecBalance[i].getDate() <= secondDateInt){
-            cout << "Data: " << incomesVecBalance[i].getDate() << endl;
+            incomesDateOfSelectedPeriod = AuxiliaryMethods::convertIntToString(incomesVecBalance[i].getDate());
+            incomesDateOfSelectedPeriodWithDashes = AuxiliaryMethods::insertDashes(incomesDateOfSelectedPeriod);
+            cout << "Data: " << incomesDateOfSelectedPeriodWithDashes << endl;
             cout << "Przychod:  " << incomesVecBalance[i].getItem() << endl;
             cout << "Kwota: " << incomesVecBalance[i].getAmount() << endl;
             cout << endl;
@@ -209,9 +213,13 @@ float BalanceManager::showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Inc
 float BalanceManager::showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Expenses> expensesVecBalance, int firstDateInt, int secondDateInt){
     int counter = 0;
     float expensesAmountTotal = 0;
+    string expensesDateOfSelectedPeriod = "", expensesDateOfSelectedPeriodWithDashes = "";
+    sort(expensesVecBalance.begin(), expensesVecBalance.end(), ComparisonExpenses());
     for (int i=0; i<expensesVecBalance.size(); i++){
         if (expensesVecBalance[i].getDate() >= firstDateInt && expensesVecBalance[i].getDate() <= secondDateInt){
-            cout << "Data: " << expensesVecBalance[i].getDate() << endl;
+            expensesDateOfSelectedPeriod = AuxiliaryMethods::convertIntToString(expensesVecBalance[i].getDate());
+            expensesDateOfSelectedPeriodWithDashes = AuxiliaryMethods::insertDashes(expensesDateOfSelectedPeriod);
+            cout << "Data: " << expensesDateOfSelectedPeriodWithDashes << endl;
             cout << "Wydatek:  " << expensesVecBalance[i].getItem() << endl;
             cout << "Kwota: " << expensesVecBalance[i].getAmount() << endl;
             cout << endl;
@@ -233,7 +241,6 @@ void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> inco
     float incomesAmountTotalPeriod = 0, expensesAmountTotalPeriod = 0, differenceBetweenIncomesAndExpensesInPeriodOfTime = 0;
     cout << "Wprowadz okres z ktorego chcesz rozliczenie format RRRR-MM-DD-RRRR-MM-DD: ";
     cout << endl;
-    getch();
     selectedPeriod = AuxiliaryMethods::loadLine();
     if (AuxiliaryMethods::checkWetherSelectedPeriodIsGood(selectedPeriod)==true){
         twoJoinedDates = AuxiliaryMethods::getTwoDatesFromSelectedPeriod(selectedPeriod);

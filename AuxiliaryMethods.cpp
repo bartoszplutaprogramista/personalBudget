@@ -119,3 +119,8 @@ string AuxiliaryMethods::divideStringAndSaveSecondDate(string joinedDate){
     return joinedDate;
 }
 
+string AuxiliaryMethods::insertDashes(string date){
+    date.insert(4, "-");
+    date.insert(7, "-");
+    return date;
+}

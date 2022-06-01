@@ -27,6 +27,7 @@ public:
     static string getTwoDatesFromSelectedPeriod(string datePeriod);
     static string divideStringAndSaveFirstDate(string joinedDate);
     static string divideStringAndSaveSecondDate(string joinedDate);
+    static string insertDashes(string date);
 
 };
 

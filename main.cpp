@@ -38,10 +38,10 @@ int menu(PersonalBudget &personalBudget){
     }
 }
 
-
 int main()
 {
     char choice;
+    int number=0;
 //    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
     PersonalBudget personalBudget;
     UserManager userManager;
@@ -56,8 +56,12 @@ int main()
         if(choice == '1') {
             personalBudget.userRegistration();
         } else if (choice == '2') {
-            personalBudget.userLoggIn();
-            menu(personalBudget);
+            number = personalBudget.userLoggIn();
+            if (number == 1){
+               menu(personalBudget);
+            }else {
+                main();
+            }
         } else if (choice == '3') {
             exit(0);
         }

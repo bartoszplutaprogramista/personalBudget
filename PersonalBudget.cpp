@@ -14,7 +14,10 @@ int PersonalBudget::userLoggIn(){
         addManager = new AddManager(userManager.getTheLoggedInUserID());
         addManager->loadDataOfIncomesIntoAVector();
         addManager->loadDataOfExpensesIntoAVector();
+    return 1;
     }
+    else
+        return 0;
 }
 
 void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
