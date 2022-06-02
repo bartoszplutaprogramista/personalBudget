@@ -40,7 +40,7 @@ int menu(PersonalBudget &personalBudget){
 
 int main()
 {
-    char choice;
+    char choiceOfUser;
     int number=0;
     PersonalBudget personalBudget;
     UserManager userManager;
@@ -51,17 +51,17 @@ int main()
         cout << "1. Rejestracja" << endl;
         cout << "2. Logowanie" << endl;
         cout << "3. Zamknij program" << endl;
-        cin >> choice;
-        if(choice == '1') {
+        cin >> choiceOfUser;
+        if(choiceOfUser == '1') {
             personalBudget.userRegistration();
-        } else if (choice == '2') {
+        } else if (choiceOfUser == '2') {
             number = personalBudget.userLoggIn();
             if (number == 1){
                menu(personalBudget);
             }else {
                 main();
             }
-        } else if (choice == '3') {
+        } else if (choiceOfUser == '3') {
             exit(0);
         }
     }
