@@ -4,15 +4,11 @@
 #include <conio.h>
 #include "UserManager.h"
 #include "User.h"
-//#include "Incomes.h"
-//#include "Expenses.h"
 #include "AddManager.h"
 #include "Markup.h"
 #include "BalanceManager.h"
 
 using namespace std;
-
-//UserManager userManager;
 
 class PersonalBudget{
     UserManager userManager;

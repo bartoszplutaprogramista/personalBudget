@@ -59,22 +59,11 @@ vector <Incomes> FileXMLIncomes::loadDataOfIncomesIntoAnAuxiliaryVector(const in
                 incomesAuxiliary.push_back(incomes);
             }
         }
-/*
-        for (int i=0; i<users.size(); i++){
-            cout << "userId: " << users[i].getUserId() << endl;
-            cout << "getLogin: " << users[i].getLogin() << endl;
-            cout << "getPassword: " << users[i].getPassword() << endl;
-            cout << "getName: " << users[i].getName() << endl;
-            cout << "getSurname: " << users[i].getSurname() << endl;
-        } */
-//        system("pause");
     }
     return incomesAuxiliary;
 }
 
 int FileXMLIncomes::getLastNumberOfIncomeID(){
-    cout << "WSZEDLEM DO GET LAST NUMBER" << endl;
-    getch();
     Incomes incomes;
     CMarkup xml;
     bool fileExists = xml.Load( "incomes.xml" );
@@ -100,7 +89,5 @@ int FileXMLIncomes::getLastNumberOfIncomeID(){
     else {
         incomes.setIncomeId(0);
     }
-    cout << "incomes.getIncomeId() " << incomes.getIncomeId() << endl;
-    getch();
     return incomes.getIncomeId();
 }

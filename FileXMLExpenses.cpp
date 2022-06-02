@@ -59,15 +59,6 @@ vector <Expenses> FileXMLExpenses::loadDataOfExpensesIntoAnAuxiliaryVector(const
                 expensesAuxiliary.push_back(expenses);
             }
         }
-/*
-        for (int i=0; i<users.size(); i++){
-            cout << "userId: " << users[i].getUserId() << endl;
-            cout << "getLogin: " << users[i].getLogin() << endl;
-            cout << "getPassword: " << users[i].getPassword() << endl;
-            cout << "getName: " << users[i].getName() << endl;
-            cout << "getSurname: " << users[i].getSurname() << endl;
-        } */
-//        system("pause");
     }
     return expensesAuxiliary;
 }

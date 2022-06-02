@@ -42,7 +42,6 @@ int main()
 {
     char choice;
     int number=0;
-//    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
     PersonalBudget personalBudget;
     UserManager userManager;
     personalBudget.loadDataIntoAVector();

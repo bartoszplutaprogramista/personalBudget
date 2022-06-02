@@ -1,7 +1,7 @@
 #include "BalanceManager.h"
 
-float BalanceManager::displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu){
-    string dateFromIncomesVec="", dateFromIncomesVecDeleted="";
+float BalanceManager::displayIncomesForTheCurrentOrPreviousMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu){
+    string dateFromIncomesVec="", dateFromIncomesVecDeleted="", incomesDateOfCurrentOrPreviousMonth ="", incomesDateOfCurrentOrPreviousMonthWithDashes ="";
     int dateIntFromIncomesVecDeleted = 0, counter = 0;
     float incomesAmountTotal = 0;
 
@@ -19,7 +19,9 @@ float BalanceManager::displayIncomesForTheCurrentMonth(vector <Incomes> incomesV
         dateFromIncomesVecDeleted = AuxiliaryMethods::deleteTheLastTwoDigits(dateFromIncomesVec);
         dateIntFromIncomesVecDeleted = AuxiliaryMethods::convertStringToInt(dateFromIncomesVecDeleted);
         if (dateIntFromIncomesVecDeleted == deletingInt){
-            cout << "Data: " << incomesVecBalance[i].getDate() << endl;
+            incomesDateOfCurrentOrPreviousMonth = AuxiliaryMethods::convertIntToString(incomesVecBalance[i].getDate());
+            incomesDateOfCurrentOrPreviousMonthWithDashes = AuxiliaryMethods::insertDashes(incomesDateOfCurrentOrPreviousMonth);
+            cout << "Data: " << incomesDateOfCurrentOrPreviousMonthWithDashes << endl;
             cout << "Przychod:  " << incomesVecBalance[i].getItem() << endl;
             cout << "Kwota: " << incomesVecBalance[i].getAmount() << endl;
             cout << endl;
@@ -39,12 +41,11 @@ float BalanceManager::displayIncomesForTheCurrentMonth(vector <Incomes> incomesV
     return incomesAmountTotal;
 }
 
-float BalanceManager::displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu){
-    string dateFromExpensesVec="", dateFromExpensesVecDeleted="";
+float BalanceManager::displayExpensesForTheCurrentOrPreviousMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu){
+    string dateFromExpensesVec="", dateFromExpensesVecDeleted="", expensesDateOfCurrentOrPreviousMonth ="", expensesDateOfCurrentOrPreviousMonthWithDashes ="";
     int dateIntFromExpensesVecDeleted = 0, counter = 0;
     float expansesAmountTotal = 0;
 
-//    dateInt = AuxiliaryMethods::convertStringToInt(date);
     cout << endl;
     if(choiceMenu == '3'){
         cout << "TWOJE WYDATKI Z BIEZACEGO MIESIACA: " << endl;
@@ -59,7 +60,9 @@ float BalanceManager::displayExpensesForTheCurrentMonth(vector <Expenses> expens
         dateFromExpensesVecDeleted = AuxiliaryMethods::deleteTheLastTwoDigits(dateFromExpensesVec);
         dateIntFromExpensesVecDeleted = AuxiliaryMethods::convertStringToInt(dateFromExpensesVecDeleted);
         if (dateIntFromExpensesVecDeleted == deletingInt){
-            cout << "Data: " << expensesVecBalance[i].getDate() << endl;
+            expensesDateOfCurrentOrPreviousMonth = AuxiliaryMethods::convertIntToString(expensesVecBalance[i].getDate());
+            expensesDateOfCurrentOrPreviousMonthWithDashes = AuxiliaryMethods::insertDashes(expensesDateOfCurrentOrPreviousMonth);
+            cout << "Data: " << expensesDateOfCurrentOrPreviousMonthWithDashes << endl;
             cout << "Przychod:  " << expensesVecBalance[i].getItem() << endl;
             cout << "Kwota: " << expensesVecBalance[i].getAmount() << endl;
             cout << endl;
@@ -91,8 +94,8 @@ void BalanceManager::displayBalanceSheetForTheCurrentMonth(vector <Incomes> inco
     deltingString = AuxiliaryMethods::deleteTheLastTwoDigits(date);
     deletingInt = AuxiliaryMethods::convertStringToInt(deltingString);
 
-    incomesAmountTotal = displayIncomesForTheCurrentMonth(incomesVecBalance, deletingInt, choiceMenu);
-    expansesAmountTotal = displayExpensesForTheCurrentMonth(expensesVecBalance, deletingInt, choiceMenu);
+    incomesAmountTotal = displayIncomesForTheCurrentOrPreviousMonth(incomesVecBalance, deletingInt, choiceMenu);
+    expansesAmountTotal = displayExpensesForTheCurrentOrPreviousMonth(expensesVecBalance, deletingInt, choiceMenu);
 
     cout << "Suma PRZYCHODOW z biezacego misiaca: " << incomesAmountTotal << endl;
 
@@ -116,40 +119,6 @@ bool BalanceManager::checkJanuary(string deltingString){
         return false;
 }
 
-/*
-float BalanceManager::displayExpensesForThePreviousMonth(vector <Expenses> expensesVecBalance, int previousMonthDeletingInt){
-    string dateFromExpensesVec="", dateFromExpensesVecDeleted="";
-    int dateIntFromExpensesVecDeleted = 0, counter = 0;
-    float expansesAmountTotal = 0;
-
-//    dateInt = AuxiliaryMethods::convertStringToInt(date);
-    cout << endl;
-    cout << "TWOJE WYDATKI Z POPRZEDNIEGO MIESIACA: " << endl;
-
-    sort(expensesVecBalance.begin(), expensesVecBalance.end(), ComparisonExpenses());
-
-    for (int i=0; i<expensesVecBalance.size(); i++){
-        dateFromExpensesVec = AuxiliaryMethods::convertIntToString(expensesVecBalance[i].getDate());
-        dateFromExpensesVecDeleted = AuxiliaryMethods::deleteTheLastTwoDigits(dateFromExpensesVec);
-        dateIntFromExpensesVecDeleted = AuxiliaryMethods::convertStringToInt(dateFromExpensesVecDeleted);
-        if (dateIntFromExpensesVecDeleted == previousMonthDeletingInt){
-            cout << "Data: " << expensesVecBalance[i].getDate() << endl;
-            cout << "Przychod:  " << expensesVecBalance[i].getItem() << endl;
-            cout << "Kwota: " << expensesVecBalance[i].getAmount() << endl;
-            cout << endl;
-            expansesAmountTotal += expensesVecBalance[i].getAmount();
-            counter++;
-        }
-    }
-    getch();
-    if (counter == 0){
-        cout << "Nie wprowadzono zadnych wydatkow w biezacym miesiacu" << endl;
-        getch();
-    }
-    return expansesAmountTotal;
-}
-*/
-
 void BalanceManager::displayTheBalanceSheetForThePreviousMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu){
     system("cls");
     string date="", deltingString="";
@@ -172,8 +141,8 @@ void BalanceManager::displayTheBalanceSheetForThePreviousMonth(vector <Incomes> 
         previousMonthDeletingInt = deletingInt - 1;
     }
 
-    incomesAmountPreviousTotal = displayIncomesForTheCurrentMonth(incomesVecBalance, previousMonthDeletingInt, choiceMenu);
-    expansesAmountPreviousTotal = displayExpensesForTheCurrentMonth(expensesVecBalance, previousMonthDeletingInt, choiceMenu);
+    incomesAmountPreviousTotal = displayIncomesForTheCurrentOrPreviousMonth(incomesVecBalance, previousMonthDeletingInt, choiceMenu);
+    expansesAmountPreviousTotal = displayExpensesForTheCurrentOrPreviousMonth(expensesVecBalance, previousMonthDeletingInt, choiceMenu);
 
     cout << "Suma PRZYCHODOW z poprzedniego misiaca: " << incomesAmountPreviousTotal << endl;
 
@@ -190,6 +159,9 @@ float BalanceManager::showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Inc
     int counter = 0;
     float incomesAmountTotal = 0;
     string incomesDateOfSelectedPeriod = "", incomesDateOfSelectedPeriodWithDashes = "";
+
+    cout << "TWOJE PRZYCHODY Z WYBRANEGO OKRESU: " << endl;
+
     sort(incomesVecBalance.begin(), incomesVecBalance.end(), Comparison());
     for (int i=0; i<incomesVecBalance.size(); i++){
         if (incomesVecBalance[i].getDate() >= firstDateInt && incomesVecBalance[i].getDate() <= secondDateInt){
@@ -214,6 +186,9 @@ float BalanceManager::showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Ex
     int counter = 0;
     float expensesAmountTotal = 0;
     string expensesDateOfSelectedPeriod = "", expensesDateOfSelectedPeriodWithDashes = "";
+
+    cout << "TWOJE WYDATKI Z WYBRANEGO OKRESU: " << endl;
+
     sort(expensesVecBalance.begin(), expensesVecBalance.end(), ComparisonExpenses());
     for (int i=0; i<expensesVecBalance.size(); i++){
         if (expensesVecBalance[i].getDate() >= firstDateInt && expensesVecBalance[i].getDate() <= secondDateInt){
@@ -262,8 +237,4 @@ void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> inco
 
     cout << "Roznica pomiedzy przychodami a wydatkami z wybranego okresu: " << differenceBetweenIncomesAndExpensesInPeriodOfTime << endl;
     getch();
-
-
 }
-
-

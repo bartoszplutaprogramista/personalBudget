@@ -28,13 +28,10 @@ class BalanceManager{
     vector <Expenses> expensesVecBalance;
 
 public:
-//    BalanceManager(){
-//        incomesVecBalance = addManager.getIncomesVec();
-//    };
     bool checkJanuary(string help);
     void displayTheBalanceSheetForThePreviousMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu);
-    float displayIncomesForTheCurrentMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu);
-    float displayExpensesForTheCurrentMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu);
+    float displayIncomesForTheCurrentOrPreviousMonth(vector <Incomes> incomesVecBalance, int deletingInt, char choiceMenu);
+    float displayExpensesForTheCurrentOrPreviousMonth(vector <Expenses> expensesVecBalance, int deletingInt, char choiceMenu);
     void displayBalanceSheetForTheCurrentMonth(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance, char choiceMenu);
     void displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance);
     float showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Incomes> incomesVecBalance, int firstDateInt, int secondDateInt);

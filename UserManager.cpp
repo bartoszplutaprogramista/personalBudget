@@ -85,6 +85,7 @@ void UserManager::loadDataIntoAVector(){
             xml.OutOfElem();
             users.push_back(user);
         }
+/*
         for (int i=0; i<users.size(); i++){
             cout << "userId: " << users[i].getUserId() << endl;
             cout << "getLogin: " << users[i].getLogin() << endl;
@@ -92,7 +93,7 @@ void UserManager::loadDataIntoAVector(){
             cout << "getName: " << users[i].getName() << endl;
             cout << "getSurname: " << users[i].getSurname() << endl;
         }
-        system("pause");
+        system("pause"); */
     }
 }
 
