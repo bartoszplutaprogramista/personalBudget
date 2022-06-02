@@ -2,37 +2,23 @@
 <Users>
 <User1>
 <UserId >1</UserId >
-<login >bart</login >
-<password >BARTPL</password >
-<name >Bartosz</name >
-<surname >Pluta</surname >
+<login >mark</login >
+<password >pasier</password >
+<name >Marek</name >
+<surname >Pasierbowicz</surname >
 </User1>
 <User2>
 <UserId >2</UserId >
-<login >mark</login >
-<password >psierb</password >
-<name >Marek</name >
-<surname >Pasierbowicz</surname >
+<login >bartosz</login >
+<password >plLU</password >
+<name >Bartosz</name >
+<surname >Pluta</surname >
 </User2>
 <User3>
 <UserId >3</UserId >
-<login >1</login >
-<password >wojtanowski</password >
-<name >Mateusz</name >
-<surname >WOjtanowski</surname >
+<login >darek</login >
+<password >gNW</password >
+<name >Dariusz</name >
+<surname >Gniewek</surname >
 </User3>
-<User4>
-<UserId >4</UserId >
-<login >kond</login >
-<password >walewWALEW</password >
-<name >Kondrad</name >
-<surname >Walewski</surname >
-</User4>
-<User5>
-<UserId >5</UserId >
-<login >wuj</login >
-<password >wuj</password >
-<name >Wujek</name >
-<surname >Wujek</surname >
-</User5>
 </Users>

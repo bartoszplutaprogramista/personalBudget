@@ -14,7 +14,10 @@ int PersonalBudget::userLoggIn(){
         addManager = new AddManager(userManager.getTheLoggedInUserID());
         addManager->loadDataOfIncomesIntoAVector();
         addManager->loadDataOfExpensesIntoAVector();
+    return 1;
     }
+    else
+        return 0;
 }
 
 void PersonalBudget::changeOfTheLoggedInUserPassword(int loggedInUserID){
@@ -41,4 +44,22 @@ void PersonalBudget::loggOutOfTheUser(){
     addManager = NULL;
     cout << "Wylogowano poprawnie" << endl;
     getch();
+}
+
+void PersonalBudget::displayBalanceSheetForTheCurrentMonth(char choiceMenu){
+    incomesVecBalance = addManager->getIncomesVec();
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayBalanceSheetForTheCurrentMonth(incomesVecBalance, expensesVecBalance, choiceMenu);
+}
+
+void PersonalBudget::displayTheBalanceSheetForThePreviousMonth(char choiceMenu){
+    incomesVecBalance = addManager->getIncomesVec();
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayTheBalanceSheetForThePreviousMonth(incomesVecBalance, expensesVecBalance, choiceMenu);
+}
+
+void PersonalBudget::displayTheBalanceForTheSelectedPeriod(){
+    incomesVecBalance = addManager->getIncomesVec();
+    expensesVecBalance = addManager->getExpensesVec();
+    balanceManager.displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
 }

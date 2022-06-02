@@ -21,39 +21,27 @@ int menu(PersonalBudget &personalBudget){
         cin >> choiceMenu;
         if(choiceMenu == '1') {
             personalBudget.addIncome();
-//            cout << "1. Dodaj przychod" << endl;
-//            getch();
         } else if (choiceMenu == '2') {
             personalBudget.addExpense();
         } else if (choiceMenu == '3') {
-//            personalBudget.displayCurrentMonthBalance();
-            cout << "3. Bilans z biezacego miesiaca" << endl;
-            getch();
+            personalBudget.displayBalanceSheetForTheCurrentMonth(choiceMenu);
         } else if (choiceMenu == '4') {
- //           personalBudget.displayTheBalanceForThePreviousMonth();
-            cout << "4. Bilans z poprzedniego miesisca" << endl;
-            getch();
+            personalBudget.displayTheBalanceSheetForThePreviousMonth(choiceMenu);
         } else if (choiceMenu == '5') {
-//            personalBudget.displayTheBalanceForTheSelectedPeriod();
-            cout << "5. Bilans z wybranego okresu" << endl;
-            getch();
+            personalBudget.displayTheBalanceForTheSelectedPeriod();
         } else if (choiceMenu == '6') {
             personalBudget.changeOfTheLoggedInUserPassword(personalBudget.getTheLoggedInUserID());
-//            cout << "6. Zmien haslo" << endl;
-//            getch();
         } else if (choiceMenu == '7') {
-//            personalBudget.loggOutOfTheUser();
             personalBudget.loggOutOfTheUser();
             return 0;
         }
     }
 }
 
-
 int main()
 {
     char choice;
-//    PersonalBudget personalBudget("users.xml", "incomes.xml", "expenses.xml");
+    int number=0;
     PersonalBudget personalBudget;
     UserManager userManager;
     personalBudget.loadDataIntoAVector();
@@ -67,8 +55,12 @@ int main()
         if(choice == '1') {
             personalBudget.userRegistration();
         } else if (choice == '2') {
-            personalBudget.userLoggIn();
-            menu(personalBudget);
+            number = personalBudget.userLoggIn();
+            if (number == 1){
+               menu(personalBudget);
+            }else {
+                main();
+            }
         } else if (choice == '3') {
             exit(0);
         }

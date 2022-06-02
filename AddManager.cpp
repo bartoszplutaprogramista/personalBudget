@@ -10,7 +10,6 @@ int AddManager::addExpense(){
     expensesVec.push_back(expenses);
 
     fileXMLExpenses.addExpenseToTheFile(expenses);
-//    wyswietl();
     cout << endl << "Wydatek dodano pomyslnie" << endl << endl;
     system("pause");
     return 0;
@@ -50,10 +49,7 @@ int AddManager::getIDOfNewUserOfExpenses(){
         return 1;
     else
         help = fileXMLExpenses.getLastNumberOfExpenseID() + 1;
- //       return fileXMLIncomes.getLastNumberOfIncomeID() + 1;
         return help;
-//        return incomesVec.back().getIncomeId() + 1;
-//fileXMLIncomes.getLastNumberOfIncomeID() + 1;
 }
 
 Expenses AddManager::writeWithAnotherDateOfExpenses(string date){
@@ -99,13 +95,11 @@ Expenses AddManager::writeTodayExpenses(){
 
 
     expenseID = getIDOfNewUserOfExpenses();
-//    cout << "incomeID W TEJ FUNKCJI: " << incomeID << endl;
-//    getch();
     expenses.setExpensesId(expenseID);
 
     expenses.setUserId(LOGGED_IN_USER_ID);
 
-    date = getSystemDate();
+    date = AuxiliaryMethods::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     expenses.setDate(dateInt);
 
@@ -135,25 +129,11 @@ int AddManager::addIncome(){
     incomesVec.push_back(incomes);
 
     fileXMLIncomes.addIncomeToTheFile(incomes);
-//    wyswietl();
     cout << endl << "Przychod dodano pomyslnie" << endl << endl;
     system("pause");
     return 0;
 
 }
-
-/*
-void AddManager::wyswietl(){
-    int incomesVecSize = incomesVec.size();
-    for (int i=0; i<incomesVecSize; i++){
-        cout << "getIncomeId: " << incomesVec[i].getIncomeId() << endl;
-        cout << "getUserId: " << incomesVec[i].getUserId() << endl;
-        cout << "getDate: " << incomesVec[i].getDate() << endl;
-        cout << "getItem: " << incomesVec[i].getItem() << endl;
-        cout << "getAmount: " << incomesVec[i].getAmount() << endl;
-    }
-    system("pause");
-} */
 
 int AddManager::getIDOfNewUser(){
     FileXMLIncomes fileXMLIncomes;
@@ -164,10 +144,7 @@ int AddManager::getIDOfNewUser(){
         return 1;
     else
         help = fileXMLIncomes.getLastNumberOfIncomeID() + 1;
- //       return fileXMLIncomes.getLastNumberOfIncomeID() + 1;
         return help;
-//        return incomesVec.back().getIncomeId() + 1;
-//fileXMLIncomes.getLastNumberOfIncomeID() + 1;
 }
 
 Incomes AddManager::writeToday(){
@@ -181,13 +158,11 @@ Incomes AddManager::writeToday(){
 
 
     incomeID = getIDOfNewUser();
-//    cout << "incomeID W TEJ FUNKCJI: " << incomeID << endl;
-//    getch();
     incomes.setIncomeId(incomeID);
 
     incomes.setUserId(LOGGED_IN_USER_ID);
 
-    date = getSystemDate();
+    date = AuxiliaryMethods::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     incomes.setDate(dateInt);
 
@@ -271,50 +246,16 @@ string AddManager::checkTheComma(string amountText){
     return amountText;
 }
 
-string AddManager::getSystemDate(){
-    int yearToday = 0, monthToday = 0, dayToday = 0;
-    string year = "", month = "", day = "";
-    string wholeDate = "";
-    time_t t = time(0);   // get time now
-    tm* now = localtime(&t);
-    yearToday = now->tm_year + 1900;
-    monthToday = now->tm_mon + 1;
-    dayToday = now->tm_mday;
-
-    year = AuxiliaryMethods::convertIntToString(yearToday);
-    month = AuxiliaryMethods::convertIntToString(monthToday);
-    month = addZeroBeforeMonth(month, monthToday);
-    day = AuxiliaryMethods::convertIntToString(dayToday);
-    day = addZeroBeforeDay(day, dayToday);
-    wholeDate = year + month + day;
-
-    return wholeDate;
-}
-
-string AddManager::addZeroBeforeMonth(string variableMonth, int monthToday){
-    if (monthToday < 10){
-        variableMonth = "0" + variableMonth;
-    }
-    return variableMonth;
-}
-
-string AddManager::addZeroBeforeDay(string variableDay, int dayToday){
-    if (dayToday < 10){
-        variableDay = "0" + variableDay;
-    }
-    return variableDay;
-}
-
 string AddManager::getYearMonthDay(string date){
     string yearMonthDay;
-    string pojedynczaDanaUzytkownika = "";
+    string singleUserData = "";
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < date.length(); pozycjaZnaku++){
-        if (date[pozycjaZnaku] != '-'){
-            pojedynczaDanaUzytkownika += date[pozycjaZnaku];
+    for (int markPosition = 0; markPosition < date.length(); markPosition++){
+        if (date[markPosition] != '-'){
+            singleUserData += date[markPosition];
         }
     }
-        yearMonthDay = pojedynczaDanaUzytkownika;
+        yearMonthDay = singleUserData;
     return yearMonthDay;
 }
 
@@ -322,30 +263,22 @@ void AddManager::loadDataOfIncomesIntoAVector(){
     FileXMLIncomes fileXMLIncomes;
 
     incomesVec = fileXMLIncomes.loadDataOfIncomesIntoAnAuxiliaryVector(LOGGED_IN_USER_ID);
-
-    /*
-        for (int i=0; i<incomesVec.size(); i++){
-            cout << "incomeId PO ZALADOWANIU: " << incomesVec[i].getIncomeId() << endl;
-            cout << "userId PO ZALADOWANIU: " << incomesVec[i].getUserId() << endl;
-            cout << "date PO ZALADOWANIU: " << incomesVec[i].getDate() << endl;
-            cout << "item PO ZALADOWANIU:  " << incomesVec[i].getItem() << endl;
-            cout << "amount PO ZALADOWANIU: " << incomesVec[i].getAmount() << endl;
-        }
-        getch(); */
 }
 
 void AddManager::loadDataOfExpensesIntoAVector(){
     FileXMLExpenses fileXMLExpenses;
 
     expensesVec = fileXMLExpenses.loadDataOfExpensesIntoAnAuxiliaryVector(LOGGED_IN_USER_ID);
+}
 
-    /*
-        for (int i=0; i<incomesVec.size(); i++){
-            cout << "incomeId PO ZALADOWANIU: " << incomesVec[i].getIncomeId() << endl;
-            cout << "userId PO ZALADOWANIU: " << incomesVec[i].getUserId() << endl;
-            cout << "date PO ZALADOWANIU: " << incomesVec[i].getDate() << endl;
-            cout << "item PO ZALADOWANIU:  " << incomesVec[i].getItem() << endl;
-            cout << "amount PO ZALADOWANIU: " << incomesVec[i].getAmount() << endl;
-        }
-        getch(); */
+vector <Incomes> AddManager::getIncomesVec(){
+    return incomesVec;
+}
+
+vector <Expenses> AddManager::getExpensesVec(){
+    return expensesVec;
+}
+
+int AddManager::getLOGGED_IN_USER_ID(){
+    return LOGGED_IN_USER_ID;
 }

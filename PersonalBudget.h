@@ -6,14 +6,16 @@
 #include "User.h"
 #include "AddManager.h"
 #include "Markup.h"
+#include "BalanceManager.h"
 
 using namespace std;
-
-//UserManager userManager;
 
 class PersonalBudget{
     UserManager userManager;
     AddManager *addManager;
+    vector <Incomes> incomesVecBalance;
+    vector <Expenses> expensesVecBalance;
+    BalanceManager balanceManager;
 public:
     int addIncome();
     int addExpense();
@@ -23,6 +25,9 @@ public:
     void changeOfTheLoggedInUserPassword(int loggedInUserID);
     int getTheLoggedInUserID();
     void loggOutOfTheUser();
+    void displayBalanceSheetForTheCurrentMonth(char choiceMenu);
+    void displayTheBalanceSheetForThePreviousMonth(char choiceMenu);
+    void displayTheBalanceForTheSelectedPeriod();
 };
 
 #endif

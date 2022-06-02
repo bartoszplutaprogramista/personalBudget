@@ -29,7 +29,6 @@ public:
     };
     int addIncome();
     int addExpense();
-    string getSystemDate();
     void wyswietl();
     Incomes writeNewThings();
     Incomes writeToday();
@@ -38,13 +37,16 @@ public:
     int getIDOfNewUserOfExpenses();
     Expenses writeWithAnotherDateOfExpenses(string date);
     Expenses writeTodayExpenses();
-    string addZeroBeforeMonth(string variable, int monthToday);
-    string addZeroBeforeDay(string variable, int dayToday);
     string getYearMonthDay(string date);
     string checkTheComma(string amountText);
     void loadDataOfIncomesIntoAVector();
     void loadDataOfExpensesIntoAVector();
     int getIDOfNewUser();
+
+    vector <Incomes> getIncomesVec();
+    vector <Expenses> getExpensesVec();
+    int getLOGGED_IN_USER_ID();
+
 };
 
 #endif
