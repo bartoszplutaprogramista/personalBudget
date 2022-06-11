@@ -10,6 +10,7 @@
 #include "FileXMLIncomes.h"
 #include "FileXMLExpenses.h"
 #include "UserManager.h"
+#include "Date.h"
 
 using namespace std;
 

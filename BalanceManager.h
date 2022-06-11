@@ -6,6 +6,8 @@
 #include "Incomes.h"
 #include "AddManager.h"
 #include "AuxiliaryMethods.h"
+#include "Date.h"
+#include <iomanip>
 
 using namespace std;
 

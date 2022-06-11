@@ -30,7 +30,7 @@ Expenses AddManager::writeNewThingsOfExpenses(){
     } else {
         cout << "Wprowadz date format RRRR-MM-DD: ";
         date = AuxiliaryMethods::loadLine();
-        if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
+        if (Date::checkWetherTheDateIsGood(date)==true){
             expenses = writeWithAnotherDateOfExpenses(date);
         } else {
             system("cls");
@@ -99,7 +99,7 @@ Expenses AddManager::writeTodayExpenses(){
 
     expenses.setUserId(LOGGED_IN_USER_ID);
 
-    date = AuxiliaryMethods::getSystemDate();
+    date = Date::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     expenses.setDate(dateInt);
 
@@ -162,7 +162,7 @@ Incomes AddManager::writeToday(){
 
     incomes.setUserId(LOGGED_IN_USER_ID);
 
-    date = AuxiliaryMethods::getSystemDate();
+    date = Date::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     incomes.setDate(dateInt);
 
@@ -227,7 +227,7 @@ Incomes AddManager::writeNewThings(){
     } else {
         cout << "Wprowadz date format RRRR-MM-DD: ";
         date = AuxiliaryMethods::loadLine();
-        if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
+        if (Date::checkWetherTheDateIsGood(date)==true){
             incomes = writeWithAnotherDate(date);
         } else {
             system("cls");
