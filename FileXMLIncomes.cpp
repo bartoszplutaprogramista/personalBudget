@@ -1,16 +1,16 @@
 #include "FileXMLIncomes.h"
 
 void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
-    string incomeIdXML = "Income";
-    string iString = "";
+//    string incomeIdXML = "Income";
+//    string iString = "";
     string amountString = "";
     stringstream sstream;
 
     sstream << incomes.getAmount();
     amountString = sstream.str();
 
-    iString = AuxiliaryMethods::convertIntToString(incomes.getIncomeId());
-    incomeIdXML += iString;
+//    iString = AuxiliaryMethods::convertIntToString(incomes.getIncomeId());
+//    incomeIdXML += iString;
 
     bool fileExists = xml.Load( "incomes.xml" );
     if (!fileExists){
@@ -20,14 +20,14 @@ void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
     }
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem(incomeIdXML);
+    xml.AddElem("Income");
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem("IncomeId ", incomes.getIncomeId());
-    xml.AddElem("UserId ", incomes.getUserId());
-    xml.AddElem("Date ", incomes.getDate());
-    xml.AddElem("Item ", incomes.getItem());
-    xml.AddElem("Amount ", amountString);
+    xml.AddElem("IncomeId", incomes.getIncomeId());
+    xml.AddElem("UserId", incomes.getUserId());
+    xml.AddElem("Date", incomes.getDate());
+    xml.AddElem("Item", incomes.getItem());
+    xml.AddElem("Amount", amountString);
     xml.OutOfElem();
     xml.OutOfElem();
     xml.Save("incomes.xml");

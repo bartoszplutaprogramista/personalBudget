@@ -2,10 +2,11 @@
 
 void FileXMLUsers::addTheRecipientToTheFile(User user){
 
-    string userIdXML = "User";
-    string iString = "";
-    iString = AuxiliaryMethods::convertIntToString(user.getUserId());
-    userIdXML += iString;
+//    string userIdXML = "User";
+//    string iString = "";
+
+//    iString = AuxiliaryMethods::convertIntToString(user.getUserId());
+//    userIdXML += iString;
 
     bool fileExists = xml.Load( "users.xml" );
     if (!fileExists){
@@ -15,14 +16,14 @@ void FileXMLUsers::addTheRecipientToTheFile(User user){
     }
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem(userIdXML);
+    xml.AddElem("User");
     xml.FindElem();
     xml.IntoElem();
-    xml.AddElem("UserId ", user.getUserId());
-    xml.AddElem("login ", user.getLogin());
-    xml.AddElem("password ", user.getPassword());
-    xml.AddElem("name ", user.getName());
-    xml.AddElem("surname ", user.getSurname());
+    xml.AddElem("UserId", user.getUserId());
+    xml.AddElem("login", user.getLogin());
+    xml.AddElem("password", user.getPassword());
+    xml.AddElem("name", user.getName());
+    xml.AddElem("surname", user.getSurname());
     xml.OutOfElem();
     xml.OutOfElem();
     xml.Save("users.xml");
