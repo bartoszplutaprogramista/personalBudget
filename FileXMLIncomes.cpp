@@ -3,8 +3,10 @@
 void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
 //    string incomeIdXML = "Income";
 //    string iString = "";
-    string amountString = "";
+    string amountString = "", dateString = "", dateStringWithDashes = "";
     stringstream sstream;
+    dateString = AuxiliaryMethods::convertIntToString(incomes.getDate());
+    dateStringWithDashes = Date::insertDashes(dateString);
 
     sstream << incomes.getAmount();
     amountString = sstream.str();
@@ -25,7 +27,7 @@ void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
     xml.IntoElem();
     xml.AddElem("IncomeId", incomes.getIncomeId());
     xml.AddElem("UserId", incomes.getUserId());
-    xml.AddElem("Date", incomes.getDate());
+    xml.AddElem("Date", dateStringWithDashes);
     xml.AddElem("Item", incomes.getItem());
     xml.AddElem("Amount", amountString);
     xml.OutOfElem();
@@ -49,7 +51,7 @@ vector <Incomes> FileXMLIncomes::loadDataOfIncomesIntoAnAuxiliaryVector(const in
             xml.FindElem();
             incomes.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
             xml.FindElem();
-            incomes.setDate(atoi(MCD_2PCSZ(xml.GetData())));
+            incomes.setDate(AuxiliaryMethods::convertStringToInt(Date::getYearMonthDay(MCD_2PCSZ(xml.GetData()))));
             xml.FindElem();
             incomes.setItem(xml.GetData());
             xml.FindElem();

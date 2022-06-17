@@ -3,8 +3,10 @@
 void FileXMLExpenses::addExpenseToTheFile(Expenses expenses){
 //    string expenseIdXML = "Expense";
 //    string iString = "";
-    string amountString = "";
+    string amountString = "", dateString = "", dateStringWithDashes = "";
     stringstream sstream;
+    dateString = AuxiliaryMethods::convertIntToString(expenses.getDate());
+    dateStringWithDashes = Date::insertDashes(dateString);
 
     sstream << expenses.getAmount();
     amountString = sstream.str();
@@ -25,7 +27,7 @@ void FileXMLExpenses::addExpenseToTheFile(Expenses expenses){
     xml.IntoElem();
     xml.AddElem("expenseId", expenses.getExpensesId());
     xml.AddElem("UserId", expenses.getUserId());
-    xml.AddElem("Date", expenses.getDate());
+    xml.AddElem("Date", dateStringWithDashes);
     xml.AddElem("Item", expenses.getItem());
     xml.AddElem("Amount", amountString);
     xml.OutOfElem();
@@ -49,7 +51,7 @@ vector <Expenses> FileXMLExpenses::loadDataOfExpensesIntoAnAuxiliaryVector(const
             xml.FindElem();
             expenses.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
             xml.FindElem();
-            expenses.setDate(atoi(MCD_2PCSZ(xml.GetData())));
+            expenses.setDate(AuxiliaryMethods::convertStringToInt(Date::getYearMonthDay(MCD_2PCSZ(xml.GetData()))));
             xml.FindElem();
             expenses.setItem(xml.GetData());
             xml.FindElem();

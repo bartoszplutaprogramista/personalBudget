@@ -1,6 +1,7 @@
 #ifndef FILEXMLUSERS_H
 #define FILEXMLUSERS_H
 #include <iostream>
+#include <vector>
 #include "Markup.h"
 #include "User.h"
 #include "AuxiliaryMethods.h"
@@ -13,6 +14,7 @@ class FileXMLUsers{
     bool isTheFileEmpty();
 public:
     void addTheRecipientToTheFile(User user);
+    void changeUserPassword(int loggedInUserID, vector <User> users);
 };
 
 #endif

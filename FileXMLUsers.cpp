@@ -28,3 +28,48 @@ void FileXMLUsers::addTheRecipientToTheFile(User user){
     xml.OutOfElem();
     xml.Save("users.xml");
 }
+
+void FileXMLUsers::changeUserPassword(int loggedInUserID, vector <User> users){
+    string password = "";
+//    User user;
+    int userIDFromXML = 0;
+    cout << "Wprowadz nowe haslo: " << endl;
+    cin >> password;
+    users[loggedInUserID-1].setPassword(password);
+                for (int i=0; i<users.size(); i++){
+                    cout << "userId: " << users[i].getUserId() << endl;
+                    cout << "getLogin: " << users[i].getLogin() << endl;
+                    cout << "getPassword: " << users[i].getPassword() << endl;
+                    cout << "getName: " << users[i].getName() << endl;
+                    cout << "getSurname: " << users[i].getSurname() << endl;
+                }
+                system("pause");
+//    users[loggedInUserID-1].setPassword(password);
+    bool fileExists = xml.Load( "users.xml" );
+    if (fileExists){
+        xml.ResetPos();
+        xml.FindElem();
+        xml.IntoElem();
+        while (xml.FindElem()){
+            xml.IntoElem();
+            xml.FindElem();
+            userIDFromXML = atoi(MCD_2PCSZ(xml.GetData()));
+//            expenses.setExpensesId(atoi(MCD_2PCSZ(xml.GetData())));
+            xml.FindElem();
+//            expenses.setUserId(atoi(MCD_2PCSZ(xml.GetData())));
+            xml.FindElem();
+            if (userIDFromXML == loggedInUserID){
+                xml.RemoveElem();
+                xml.AddElem("password", password);
+                xml.Save("users.xml");
+            }
+            xml.FindElem();
+//            expenses.setItem(xml.GetData());
+            xml.FindElem();
+//            expenses.setAmount(atof(MCD_2PCSZ(xml.GetData())));
+            xml.OutOfElem();
+        }
+    }
+    cout << "Haslo zmieniono pomyslnie!" << endl;
+    getch();
+}

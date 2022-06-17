@@ -132,22 +132,8 @@ int UserManager::userLoggIn(){
 }
 
 void UserManager::changeOfTheLoggedInUserPassword(int loggedInUserID){
-    string password;
-    User user;
-    cout << "Wprowadz nowe haslo: " << endl;
-    cin >> password;
-    users[loggedInUserID-1].setPassword(password);
-    cout << "Haslo zmieniono pomyslnie!" << endl;
-    getch();
-    AuxiliaryMethods::deleteXMLFile();
-    for (int i=0; i<users.size(); i++){
-        user.setUserId(users[i].getUserId());
-        user.setLogin(users[i].getLogin());
-        user.setPassword(users[i].getPassword());
-        user.setName(users[i].getName());
-        user.setSurname(users[i].getSurname());
-        fileXMLUsers.addTheRecipientToTheFile(user);
-    }
+    FileXMLUsers fileXMLUsers;
+    fileXMLUsers.changeUserPassword(loggedInUserID, users);
 }
 
 int UserManager::getTheLoggedInUserID(){
