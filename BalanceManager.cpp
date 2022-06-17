@@ -225,26 +225,9 @@ float BalanceManager::showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Ex
     return expensesAmountTotal;
 }
 
-void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance){
-    system("cls");
-    string selectedPeriod = "", twoJoinedDates = "", firstDate = "", secondDate = "";
-    int firstDateInt = 0, secondDateInt = 0;
-    float incomesAmountTotalPeriod = 0, expensesAmountTotalPeriod = 0, differenceBetweenIncomesAndExpensesInPeriodOfTime = 0;
-    cout << "Wprowadz okres z ktorego chcesz rozliczenie format RRRR-MM-DD-RRRR-MM-DD: ";
+void BalanceManager::displaySumOfExpensesAndIncomesForTheSelectedPeriod(float incomesAmountTotalPeriod, float expensesAmountTotalPeriod){
     cout << endl;
-    selectedPeriod = AuxiliaryMethods::loadLine();
-    if (Date::checkWetherSelectedPeriodIsGood(selectedPeriod)==true){
-        twoJoinedDates = Date::getTwoDatesFromSelectedPeriod(selectedPeriod);
-        firstDate = Date::divideStringAndSaveFirstDate(twoJoinedDates);
-        secondDate = Date::divideStringAndSaveSecondDate(twoJoinedDates);
-        firstDateInt = AuxiliaryMethods::convertStringToInt(firstDate);
-        secondDateInt = AuxiliaryMethods::convertStringToInt(secondDate);
-        incomesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodIncomes(incomesVecBalance, firstDateInt, secondDateInt);
-        expensesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodExpenses(expensesVecBalance, firstDateInt, secondDateInt);
-    }else {
-        displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
-    }
-    cout << endl;
+    float differenceBetweenIncomesAndExpensesInPeriodOfTime = 0;
     if(incomesAmountTotalPeriod != 0){
         cout << "Suma PRZYCHODOW z wybranego okresu: " << fixed << setprecision(2) << incomesAmountTotalPeriod << endl;
     }
@@ -262,4 +245,36 @@ void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> inco
     if(incomesAmountTotalPeriod != 0 || expensesAmountTotalPeriod != 0){
         getch();
     }
+}
+
+void BalanceManager::displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance){
+    system("cls");
+    string firstDate = "", secondDate = "", firstDateWithoutDashes = "", secondDateWithoutDashes = "";
+    int firstDateInt = 0, secondDateInt = 0;
+    float incomesAmountTotalPeriod = 0, expensesAmountTotalPeriod = 0;
+    cout << "Wprowadz okres z ktorego chcesz rozliczenie format najpierw pierwsza data: RRRR-MM-DD" << endl;
+    firstDate = AuxiliaryMethods::loadLine();
+    if(Date::checkWetherTheDateIsGood(firstDate)==true){
+        cout << "Do drugiej daty: RRRR-MM-DD:" << endl;
+        secondDate = AuxiliaryMethods::loadLine();
+        if(Date::checkWetherTheDateIsGood(secondDate)==true){
+            firstDateWithoutDashes = Date::getStringDateWithoutDashes(firstDate);
+            secondDateWithoutDashes = Date::getStringDateWithoutDashes(secondDate);
+            firstDateInt = AuxiliaryMethods::convertStringToInt(firstDateWithoutDashes);
+            secondDateInt = AuxiliaryMethods::convertStringToInt(secondDateWithoutDashes);
+            if(firstDateInt > secondDateInt){
+                cout << "Pierwsza Data powinna byæ starsza niz druga. Sproboj jeszcze raz" << endl;
+                getch();
+                displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
+            }else{
+                incomesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodIncomes(incomesVecBalance, firstDateInt, secondDateInt);
+                expensesAmountTotalPeriod = showTheBalanceSheetForTheSelectedPeriodExpenses(expensesVecBalance, firstDateInt, secondDateInt);
+            }
+        }else{
+            displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
+        }
+    }else{
+        displayTheBalanceForTheSelectedPeriod(incomesVecBalance, expensesVecBalance);
+    }
+    displaySumOfExpensesAndIncomesForTheSelectedPeriod(incomesAmountTotalPeriod, expensesAmountTotalPeriod);
 }
