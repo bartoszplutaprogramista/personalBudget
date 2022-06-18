@@ -30,12 +30,17 @@ Expenses AddManager::writeNewThingsOfExpenses(){
     } else {
         cout << "Wprowadz date format RRRR-MM-DD: ";
         date = AuxiliaryMethods::loadLine();
-        if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
-            expenses = writeWithAnotherDateOfExpenses(date);
-        } else {
-            system("cls");
-            expenses = writeNewThingsOfExpenses();
-        }
+           if (Date::checkWetherTheDateIsGood(date)==true){
+                if(Date::checkDateValidation(date)==true){
+                    expenses = writeWithAnotherDateOfExpenses(date);
+                }else{
+                    system("cls");
+                    expenses = writeNewThingsOfExpenses();
+                }
+            } else {
+                system("cls");
+                expenses = writeNewThingsOfExpenses();
+            }
     }
 return expenses;
 }
@@ -65,7 +70,7 @@ Expenses AddManager::writeWithAnotherDateOfExpenses(string date){
 
     expenses.setUserId(LOGGED_IN_USER_ID);
 
-    yearMonthDay = getYearMonthDay(date);
+    yearMonthDay = Date::getYearMonthDay(date);
     dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
     expenses.setDate(dateInt);
 
@@ -99,7 +104,7 @@ Expenses AddManager::writeTodayExpenses(){
 
     expenses.setUserId(LOGGED_IN_USER_ID);
 
-    date = AuxiliaryMethods::getSystemDate();
+    date = Date::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     expenses.setDate(dateInt);
 
@@ -162,7 +167,7 @@ Incomes AddManager::writeToday(){
 
     incomes.setUserId(LOGGED_IN_USER_ID);
 
-    date = AuxiliaryMethods::getSystemDate();
+    date = Date::getSystemDate();
     dateInt = AuxiliaryMethods::convertStringToInt(date);
     incomes.setDate(dateInt);
 
@@ -194,7 +199,7 @@ Incomes AddManager::writeWithAnotherDate(string date){
 
     incomes.setUserId(LOGGED_IN_USER_ID);
 
-    yearMonthDay = getYearMonthDay(date);
+    yearMonthDay = Date::getYearMonthDay(date);
     dateInt = AuxiliaryMethods::convertStringToInt(yearMonthDay);
     incomes.setDate(dateInt);
 
@@ -227,12 +232,18 @@ Incomes AddManager::writeNewThings(){
     } else {
         cout << "Wprowadz date format RRRR-MM-DD: ";
         date = AuxiliaryMethods::loadLine();
-        if (AuxiliaryMethods::checkWetherTheDateIsGood(date)==true){
-            incomes = writeWithAnotherDate(date);
-        } else {
-            system("cls");
-            incomes = writeNewThings();
-        }
+
+            if (Date::checkWetherTheDateIsGood(date)==true){
+                if(Date::checkDateValidation(date)==true){
+                    incomes = writeWithAnotherDate(date);
+                }else{
+                    system("cls");
+                    incomes = writeNewThings();
+                }
+            } else {
+                system("cls");
+                incomes = writeNewThings();
+            }
     }
 return incomes;
 }
@@ -244,19 +255,6 @@ string AddManager::checkTheComma(string amountText){
         }
     }
     return amountText;
-}
-
-string AddManager::getYearMonthDay(string date){
-    string yearMonthDay;
-    string singleUserData = "";
-
-    for (int markPosition = 0; markPosition < date.length(); markPosition++){
-        if (date[markPosition] != '-'){
-            singleUserData += date[markPosition];
-        }
-    }
-        yearMonthDay = singleUserData;
-    return yearMonthDay;
 }
 
 void AddManager::loadDataOfIncomesIntoAVector(){

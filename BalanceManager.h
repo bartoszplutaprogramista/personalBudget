@@ -6,6 +6,8 @@
 #include "Incomes.h"
 #include "AddManager.h"
 #include "AuxiliaryMethods.h"
+#include "Date.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -36,6 +38,7 @@ public:
     void displayTheBalanceForTheSelectedPeriod(vector <Incomes> incomesVecBalance, vector <Expenses> expensesVecBalance);
     float showTheBalanceSheetForTheSelectedPeriodIncomes(vector <Incomes> incomesVecBalance, int firstDateInt, int secondDateInt);
     float showTheBalanceSheetForTheSelectedPeriodExpenses(vector <Expenses> expensesVecBalance, int firstDateInt, int secondDateInt);
+    void displaySumOfExpensesAndIncomesForTheSelectedPeriod(float incomesAmountTotalPeriod, float expensesAmountTotalPeriod);
 
 };
 
