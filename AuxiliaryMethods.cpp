@@ -15,15 +15,6 @@ string AuxiliaryMethods::loadLine(){
     return variableIn;
 }
 
-void AuxiliaryMethods::deleteXMLFile(){
-    char path[] = "users.xml";
-    int remove(const char *path);
-    if( remove( path ) == -1 ){
-      cout << "Could not delete " << path;
-      getch();
-    }
-}
-
 int AuxiliaryMethods::convertStringToInt(string number){
     int numberInt;
     istringstream iss(number);

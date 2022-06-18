@@ -15,7 +15,6 @@ class AuxiliaryMethods{
 public:
     static string convertIntToString(int number);
     static string loadLine();
-    static void deleteXMLFile();
     static int convertStringToInt(string number);
 };
 

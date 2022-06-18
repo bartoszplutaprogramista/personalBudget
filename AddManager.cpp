@@ -257,20 +257,6 @@ string AddManager::checkTheComma(string amountText){
     return amountText;
 }
 
-/*
-string AddManager::getYearMonthDay(string date){
-    string yearMonthDay;
-    string singleUserData = "";
-
-    for (int markPosition = 0; markPosition < date.length(); markPosition++){
-        if (date[markPosition] != '-'){
-            singleUserData += date[markPosition];
-        }
-    }
-        yearMonthDay = singleUserData;
-    return yearMonthDay;
-} */
-
 void AddManager::loadDataOfIncomesIntoAVector(){
     FileXMLIncomes fileXMLIncomes;
 

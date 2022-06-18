@@ -1,8 +1,6 @@
 #include "FileXMLExpenses.h"
 
 void FileXMLExpenses::addExpenseToTheFile(Expenses expenses){
-//    string expenseIdXML = "Expense";
-//    string iString = "";
     string amountString = "", dateString = "", dateStringWithDashes = "";
     stringstream sstream;
     dateString = AuxiliaryMethods::convertIntToString(expenses.getDate());
@@ -10,9 +8,6 @@ void FileXMLExpenses::addExpenseToTheFile(Expenses expenses){
 
     sstream << expenses.getAmount();
     amountString = sstream.str();
-
-//    iString = AuxiliaryMethods::convertIntToString(expenses.getExpensesId());
-//    expenseIdXML += iString;
 
     bool fileExists = xml.Load( "expenses.xml" );
     if (!fileExists){

@@ -1,8 +1,6 @@
 #include "FileXMLIncomes.h"
 
 void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
-//    string incomeIdXML = "Income";
-//    string iString = "";
     string amountString = "", dateString = "", dateStringWithDashes = "";
     stringstream sstream;
     dateString = AuxiliaryMethods::convertIntToString(incomes.getDate());
@@ -10,9 +8,6 @@ void FileXMLIncomes::addIncomeToTheFile(Incomes incomes){
 
     sstream << incomes.getAmount();
     amountString = sstream.str();
-
-//    iString = AuxiliaryMethods::convertIntToString(incomes.getIncomeId());
-//    incomeIdXML += iString;
 
     bool fileExists = xml.Load( "incomes.xml" );
     if (!fileExists){

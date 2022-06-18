@@ -14,7 +14,7 @@ class FileXMLUsers{
     bool isTheFileEmpty();
 public:
     void addTheRecipientToTheFile(User user);
-    void changeUserPassword(int loggedInUserID, vector <User> users);
+    void changeUserPassword(int loggedInUserID, string password);
 };
 
 #endif

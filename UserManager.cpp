@@ -133,7 +133,13 @@ int UserManager::userLoggIn(){
 
 void UserManager::changeOfTheLoggedInUserPassword(int loggedInUserID){
     FileXMLUsers fileXMLUsers;
-    fileXMLUsers.changeUserPassword(loggedInUserID, users);
+    string password = "";
+    cout << "Wprowadz nowe haslo: " << endl;
+    cin >> password;
+    users[loggedInUserID-1].setPassword(password);
+    fileXMLUsers.changeUserPassword(loggedInUserID, password);
+    cout << "Haslo zmieniono pomyslnie!" << endl;
+    getch();
 }
 
 int UserManager::getTheLoggedInUserID(){

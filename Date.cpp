@@ -123,17 +123,6 @@ string Date::deleteFourFirstDigits(string deletingString){
     return deletingString;
 }
 
-/*
-bool Date::checkWetherSelectedPeriodIsGood(string datePeriod){
-    if (datePeriod[4] != '-' || datePeriod[7] != '-' || datePeriod[10] != '-' || datePeriod[15] != '-' || datePeriod[18] != '-'){
-        cout << "Zly format okresu rozliczeniowego sproboj jeszcze raz " << endl;
-        system("pause");
-        system("cls");
-        return false;
-    }
-    return true;
-} */
-
 string Date::getStringDateWithoutDashes(string date){
     string yearMonthDay;
     string singleUserData = "";
@@ -146,18 +135,6 @@ string Date::getStringDateWithoutDashes(string date){
         yearMonthDay = singleUserData;
     return yearMonthDay;
 }
-
-
-/*
-string Date::divideStringAndSaveFirstDate(string joinedDate){
-    joinedDate.erase (8,8);
-    return joinedDate;
-}
-
-string Date::divideStringAndSaveSecondDate(string joinedDate){
-    joinedDate.erase (0,8);
-    return joinedDate;
-} */
 
 string Date::insertDashes(string date){
     date.insert(4, "-");
